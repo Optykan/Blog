@@ -3,15 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"node ./bin/www\" \"gulp\""
+    "start": "gulp server"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
-    "concurrently": "^3.5.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
+    "foundation-sites": "^6.4.4-rc1",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"
   },
