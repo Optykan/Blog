@@ -3,6 +3,7 @@ var gulp        = require('gulp');
 var child       = require('child_process');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
+var notify      = require('gulp-notify');
 
 // Static Server + watching scss/html files
 
@@ -26,7 +27,8 @@ gulp.task('sass', function() {
 	.pipe(sass({ outputStyle: 'compressed' })
 		.on('error', sass.logError))
 	.pipe(gulp.dest("public/stylesheets"))
-	.pipe(browserSync.stream());
+	.pipe(browserSync.stream())
+	.pipe(notify("Compiled successfully"));
 });
 
 gulp.task('default', ['server']);
