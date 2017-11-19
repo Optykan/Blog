@@ -1,4 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:700|Open+Sans:300,400,600|Playfair+Display');
+
 @import '../../node_modules/foundation-sites/scss/foundation';
 @import 'settings';
 @include foundation-everything
 
+$category-colour: #1abc9c;
+
+
+@mixin dim($amount){
+	position:relative;
+	&::after{ 
+		height:100%;
+		width:100%;
+		background-color: rgba(0, 0, 0, $amount);		
+		position:absolute;
+		content: '';
+		left:0;
+	}
+}
+
+#header{
+	height: 100vh;
+	position:relative;
+	#hero-left{
+		background-image: url("http://images.summitpost.org/original/815426.jpg");
+		background-size: 100% 100%;
+		@include dim(0.5);
+		overflow:hidden;
+		&::after{
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+99 */
+			background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 99%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 99%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 99%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+		}
+	}
+	
+}
+
+
+.noborder{
+	border: none;
+}
+
+#blog-posts{
+	margin-top: 5rem;
+	overflow: auto;
+}
+
+.blog-post{
+	margin-bottom: 5rem;
+	.title{
+		font-weight:600;
+	}
+	.meta{
+		margin-left: 0;
+		*{
+			font-weight:600;
+			font-size: 0.9rem;
+			text-transform: uppercase;
+			font-family: 'Lato', sans-serif;
+		}
+		.date{
+			display:inline;
+		}
+		.separator{
+			margin-left:3px;
+			margin-right:2px;
+			&::after{
+				content: "|";
+				position: relative;
+				bottom: 1px;
+				color: $dark-gray;
+			}
+			
+		}
+		.category{
+			display:inline;
+			color: $category-colour;
+		}
+	}
+	a{
+		font-family: 'Lato', sans-serif;
+		text-transform: uppercase;
+	}
+}
