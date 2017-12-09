@@ -20,8 +20,8 @@ gulp.task('server', ['sass'], function() {
 	});
 
 	gulp.watch("assets/scss/*.scss", ['sass']);
-	gulp.watch("assets/js/*.js", ['js']);
-	gulp.watch(["routes/*.html", "views/*/*.ejs"]).on('change', browserSync.reload);
+	gulp.watch("assets/js/**/*.js", ['js']);
+	gulp.watch(["routes/*.html", "views/**/*.ejs"]).on('change', browserSync.reload);
 });
 
 // Compile sass into CSS & auto-inject into browsers
@@ -35,7 +35,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function(){
-	gulp.src("assets/js/*.js")
+	gulp.src("assets/js/**/*.js")
 	.pipe(babel({
 		presets: ['env']
 	}))
