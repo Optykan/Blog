@@ -4,9 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var session = require('express-session')
+var MongoStore = require('connect-mongo')(session)
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
 
 var app = express();
 
@@ -24,12 +29,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/auth', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // error handler
@@ -42,5 +48,29 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+var mongoOptions={
+	url: process.env.MONGO_DB_URL
+}
+app.use(session({
+	store: new MongoStore(mongoOptions),
+	resave: false,
+	saveUninitialized: false
+}))
+
+
+// auth stuff
+passport.use(new GoogleStrategy({
+	clientID: process.env.GOOGLE_CLIENT_ID,
+	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+	callbackURL: process.env.PASSPORT_GOOGLE_CALLBACK
+},
+function(token, tokenSecret, profile, done) {
+	User.findOrCreate({ googleId: profile.id }, function (err, user) {
+		return done(err, user);
+	});
+}
+));
 
 module.exports = app;
