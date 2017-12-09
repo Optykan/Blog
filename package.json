@@ -17,7 +17,10 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.18.13",
+    "gulp-babel": "^7.0.0",
     "gulp-notify": "^3.0.0",
     "gulp-sass": "^3.1.0"
   }
