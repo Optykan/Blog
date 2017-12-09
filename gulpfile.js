@@ -4,6 +4,8 @@ var child       = require('child_process');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
 var notify      = require('gulp-notify');
+var babel       = require('gulp-babel');
+var babelcore   = require('babel-core');
 
 // Static Server + watching scss/html files
 
@@ -18,6 +20,7 @@ gulp.task('server', ['sass'], function() {
 	});
 
 	gulp.watch("assets/scss/*.scss", ['sass']);
+	gulp.watch("assets/js/*.js", ['js']);
 	gulp.watch(["routes/*.html", "views/*/*.ejs"]).on('change', browserSync.reload);
 });
 
@@ -30,5 +33,15 @@ gulp.task('sass', function() {
 	.pipe(browserSync.stream())
 	.pipe(notify("Compiled successfully"));
 });
+
+gulp.task('js', function(){
+	gulp.src("assets/js/*.js")
+	.pipe(babel({
+		presets: ['env']
+	}))
+	.pipe(gulp.dest("public/javascripts"));
+
+	return browserSync.reload();
+})
 
 gulp.task('default', ['server']);
