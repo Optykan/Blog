@@ -49,3 +49,4 @@ TypeError: OAuthStrategy requires a consumerKey option
     at Module.require (module.js:497:17)
     at require (internal/module.js:20:19)
 Sat, 09 Dec 2017 05:04:03 GMT express-session deprecated req.secret; provide secret option at app.js:56:9
+Sun, 10 Dec 2017 04:44:21 GMT express-session deprecated req.secret; provide secret option at app.js:56:9
