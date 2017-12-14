@@ -5,17 +5,12 @@ var db = {}
 const PostManager = require('../models/PostManager')
 
 /* GET /posts */
-router.post('/', function(req, res, next) {
-	res.json(PostManager.insert({
+router.post('/', async function(req, res, next) {
+	let insert = await PostManager.insert({
 		title:"test"
-	}))
+	})
+	res.json(insert)
 });
 
-function provideDB(conn){
-	PostManager.db = conn
-}
 
-module.exports = {
-	router: router,
-	provideDB: provideDB
-}
+module.exports = router
