@@ -1,18 +1,15 @@
+<% var stylesheets = ['/stylesheets/home.css'] %>
 <% include partials/header %>
 
-
-<div class="grid-x" id="header">
-	<div class="small-12 medium-12 large-6 xlarge-6 cell" id="hero-left">
-		<div id="hero-text-container">
-			<h1>Samuel Yang</h1>
-			<h6>developer</h6>
-			<p>clearly a web dev, not a web designer.</p>
-		</div>
+<div class="grid-y grid-frame" id="home">
+	<div class="cell small-6 large-10" id="hero">
+		<h1>Hi there.</h1>
 	</div>
-	<div class="small-12 medium-12 large-6 xlarge-6 cell grid-container grid-x noborder" id="blog-posts">
-		<% for(var i=0; i<20; i++) { %>
-		<%- include partials/blog-card %>
-		<% } %>
+	<div class="cell small-6">
+		other
+	</div>
+	<div class="cell small-6">
+		other
 	</div>
 </div>
 

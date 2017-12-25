@@ -11,10 +11,11 @@ var MongoStore = require('connect-mongo')(session)
 
 var User = require('./models/User')
 
-var index = require('./routes/index');
+var index = require('./routes/index')
+var blog = require('./routes/blog');
 var users = require('./routes/users');
 var login = require('./routes/login');
-var posts = require('./routes/posts')
+var posts = require('./routes/posts');
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/blog', blog);
 app.use('/users', users);
 app.use('/auth', login);
 app.use('/posts', posts);
@@ -83,7 +85,7 @@ function(token, tokenSecret, profile, done) {
 	User.findOrCreate(profile).then(user=>{
 		return done(null, profile)
 	});
-})
+}))
 
 
 module.exports = app;

@@ -1,0 +1,14 @@
+@import 'utils';
+
+#home{
+	#hero{
+		background-image: url('https://picsum.photos/1920/1080?image=830');
+		background-size: 100% 100%;
+		clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+		display:flex;
+		align-items:center;
+		justify-content: center;
+		@include gradient-dim; 
+
+	}
+}

@@ -2,6 +2,15 @@
 <html> 
 <head>
 	<title><%= title %></title>
+
 	<link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
+
+	<!-- dont forget to include a stylesheets variable -->
+	<% if (stylesheets) { %>
+		<% for(var i=0; i<stylesheets.length; i++) { %>
+			<link rel='stylesheet' href=<%= stylesheets[i]%> />
+			<% } %>
+			<% } %>
+
+			</head>
+			<body>
