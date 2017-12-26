@@ -1,14 +1,35 @@
 @import 'utils';
+@import '../../node_modules/foundation-sites/scss/foundation';
 
 #home{
-	#hero{
-		background-image: url('https://picsum.photos/1920/1080?image=830');
-		background-size: 100% 100%;
-		clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+	height:100vh;
+	.header-text{
 		display:flex;
 		align-items:center;
 		justify-content: center;
-		@include gradient-dim; 
-
+		color: white;
+	}
+	.hero-header{
+		@include breakpoint(large up){
+			height: 83.33%;
+			top: -8.33%;
+		}
+		@include breakpoint(medium only){
+			height: 66.67%;
+			top: -16.67%;
+		}
+		@include breakpoint(small down){
+			height: 50%;
+			top: -25%;
+		}
+		background-image: url('https://picsum.photos/1920/1080?image=830');
+		background-size: 100% 100%;
+		clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+	}
+	.parallax-no-scroll{
+		transform: translateZ(-1px) scale(2);
+	}
+	.parallax-padding{
+		margin-top: 1rem;
 	}
 }

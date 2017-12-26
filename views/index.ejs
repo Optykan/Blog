@@ -1,15 +1,43 @@
-<% var stylesheets = ['/stylesheets/home.css'] %>
+<% var stylesheets = ['/stylesheets/home.css', '/stylesheets/parallax.css'] %>
 <% include partials/header %>
+<!-- 
+<div class="grid-y" id="home">
+	<div class="parallax-wrapper cell small-6 large-10">
+		<div id="hero">
+			<h1>Hi there.</h1>
+		</div>
+		<div class="parallax-back">
+			deep
+		</div>
+	</div>
+	<div class="cell small-6">
+		other
+	</div>
+	<div class="cell small-6">
+		other
+	</div>
+</div> -->
 
-<div class="grid-y grid-frame" id="home">
-	<div class="cell small-6 large-10" id="hero">
-		<h1>Hi there.</h1>
-	</div>
-	<div class="cell small-6">
-		other
-	</div>
-	<div class="cell small-6">
-		other
+<div>
+	<div class="grid-y parallax" id="home">
+		<div class="parallax-layer parallax-back hero-header"></div>
+		<div class="cell small-6 medium-8 large-10 parallax-layer parallax-base header-text">
+			<h1>Hi there.</h1>
+		</div>
+		<div class="cell small-12 parallax-padding"></div>
+		<div class="cell medium-4 parallax-padding"></div>
+		<div class="cell large-4 parallax-padding"></div>
+		<div class="parallax-no-scroll grid-y cell small-12">
+			<div class="cell small-6">
+				section
+			</div>
+			<div class="cell small-6">
+				another section
+			</div>
+			<div class="cell small-6">
+				yet another
+			</div>
+		</div>
 	</div>
 </div>
 
