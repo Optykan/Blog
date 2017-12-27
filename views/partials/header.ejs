@@ -6,7 +6,7 @@
 	<link rel='stylesheet' href='/stylesheets/style.css' />
 
 	<!-- dont forget to include a stylesheets variable -->
-	<% if (stylesheets) { %>
+	<% if (typeof stylesheets !== 'undefined') { %>
 		<% for(var i=0; i<stylesheets.length; i++) { %>
 			<link rel='stylesheet' href=<%= stylesheets[i]%> />
 			<% } %>

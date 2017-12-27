@@ -3,7 +3,7 @@
 	<script src="/javascripts/app.js"></script>
 
 
-	<% if (scripts) { %>
+	<% if (typeof scripts !== 'undefined') { %>
 		<% for(var i=0; i<scripts.length; i++) { %>
 			<script src=<%= scripts[i]%>> </script>
 			<% } %>

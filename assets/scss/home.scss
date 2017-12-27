@@ -71,7 +71,7 @@
 		.arrow{
 			left: 0;
 			color: rgba(0,0,0,0.1);
-			animation: graywhitecycle 4s linear 0s infinite normal;
+			animation: graywhitecycle 4s ease-in-out 0s infinite normal;
 			&:nth-child(1){
 			}
 			&:nth-child(2){
