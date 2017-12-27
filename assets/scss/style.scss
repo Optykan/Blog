@@ -26,13 +26,18 @@
 	&.white{
 		color: white;
 		border: 1px solid white;
+		background-color: rgba(0,0,0,0);
+	}
+	&.black{
+		color: black;
+		border: 1px black solid;
+		background-color: white;
 	}
 	&.transparent{
 		background-color: rgba(0,0,0,0);
-		border: 1px white solid;
+		transition: ease 0.5s;
 		&:hover{
 			background-color: white;
-			transition: ease 0.5s;
 			color: black;
 		}
 	}
@@ -75,4 +80,9 @@ hr.small-divider{
 		padding: 0 1.5rem;
 		color: white;
 	}
+}
+
+#blog-link{
+	will-change: transform;
+	transform: translateZ(0);
 }

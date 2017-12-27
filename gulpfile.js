@@ -39,7 +39,7 @@ gulp.task('js', function(){
 	gulp.src("assets/js/**/*.js")
 	.pipe(babel({
 		presets: ['env']
-	}))
+	}).on('error', console.log))
 	.pipe(gulp.dest("public/javascripts"));
 
 	return browserSync.reload();
