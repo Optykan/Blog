@@ -16,7 +16,8 @@ gulp.task('server', ['sass'], function() {
 
 	browserSync.init({
 		proxy: "localhost:3000",
-		port: 3001
+		port: 3001,
+		notify: false
 	});
 
 	gulp.watch("assets/scss/*.scss", ['sass']);

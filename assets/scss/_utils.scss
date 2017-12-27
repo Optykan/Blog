@@ -1,5 +1,11 @@
+.lato{
+	font-family: 'Lato', sans-serif;
+}
+.os{
+	font-family: 'Open Sans', sans-serif;
+}
+
 @mixin dim($amount){
-	position:relative;
 	&::after{ 
 		height:100%;
 		width:100%;

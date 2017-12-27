@@ -6,9 +6,6 @@ function parallax($elem){
 	$elem.css('background-position', 'center '+(-newx*parallax_scale)+'px');
 }
 
-
-(function(){
-	$(document).scroll(e=>{
-		parallax($('#hero-left'))
-	})
-})()
+	// $(document).scroll(e=>{
+	// 	parallax($('#hero-left')) 
+	// })

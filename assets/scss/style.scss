@@ -1,100 +1,78 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:700|Open+Sans:300,400,600|Playfair+Display|Rochester');
+@import url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 
 @import '../../node_modules/foundation-sites/scss/foundation';
 @import 'settings';
 @import 'utils';
 @include foundation-everything
 
-$category-colour: #1abc9c;
-
-#header{
-	height: 100vh;
-	position:relative;
-	#hero-left{
-		background-image: url("../images/everest.jpg");
-		background-position: center 0px;
-		background-size: auto 200%;
-		@include gradient-dim;
-		@include breakpoint(large up){
-			overflow:hidden;
-			position:fixed;
-			height:100%;
-		}
-		// transform: scale(1.1)
-
-		#hero-text-container{
-			position: absolute;
-			bottom: 0;
-			z-index: 99;
-			width:100%;
-			text-transform: lowercase;
-			color: white;
-			text-align:center;
-			h1{
-				font-family: 'Rochester', cursive;
-			}
-			h6{
-				font-family: 'Lato', sans-serif;
-				text-transform: uppercase;
-			}
-			@include breakpoint(medium down){
-				position: relative;
-				bottom: 0;
-				margin-top: 50%;
-			}
-		}
-
-	}
-	
-}
-
-
 .noborder{
 	border: none;
 }
 
-#blog-posts{
-	@include breakpoint(large up){
-		margin-top: 4rem;
-		position:absolute;
-		right:0;
+.top-bar{
+	z-index:99;
+	&.stick{
+		position:fixed;
+		width:100%;
+		right: 1rem;
 	}
 }
 
-.blog-post{
-	margin-bottom: 3rem;
-	.title{
-		font-weight:600;
+.button{
+	&.round{
+		border-radius:2rem;
 	}
-	.meta{
-		margin-left: 0;
-		*{
-			font-weight:600;
-			font-size: 0.9rem;
-			text-transform: uppercase;
-			font-family: 'Lato', sans-serif;
+	&.white{
+		color: white;
+		border: 1px solid white;
+	}
+	&.transparent{
+		background-color: rgba(0,0,0,0);
+		border: 1px white solid;
+		&:hover{
+			background-color: white;
+			transition: ease 0.5s;
+			color: black;
 		}
-		.date{
-			display:inline;
+	}
+}
+
+.top-bar{
+	font-family: 'Lato', sans-serif;
+	.top-bar-right .menu{
+		margin-top:1rem;
+		margin-right:1rem;
+		.button{
+			padding-left: 1.5rem;
+			padding-right: 1.5rem;
 		}
-		.separator{
-			margin-left:3px;
-			margin-right:2px;
-			&::after{
-				content: "|";
-				position: relative;
-				bottom: 1px;
-				color: $dark-gray;
-			}
-			
-		}
-		.category{
-			display:inline;
-			color: $category-colour;
+
+	}
+}
+
+hr.small-divider{
+	width: 10%;
+	border-radius:1rem;
+	&.black{
+		border: 2px solid black;
+	}
+	&.white{
+		border: 2px solid white;
+	}
+}
+
+.social{
+	margin-top: 1rem;
+	.social-link{
+		border-right: 1px solid white;
+		font-size: 2rem;
+		&:last-child{
+			border-right: none;
 		}
 	}
 	a{
-		font-family: 'Lato', sans-serif;
-		text-transform: uppercase;
+		padding: 0 1.5rem;
+		color: white;
 	}
 }
