@@ -1,0 +1,38 @@
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+$image-spacing: 10rem;
+
+.portfolio{
+	position:relative;
+	top: 5rem;
+	.portfolio-image-wrapper{
+		position:relative;
+		left:7.5%;
+		min-height: 500px;
+		.portfolio-image{
+			transform: perspective(1000px) rotateX(0deg) rotateY(50deg) rotateZ(0deg);
+			box-shadow: 1px 1px 10px #cccccc;
+			top:0;
+			&.image-1{
+				top: 0;
+				left: 0;
+				position: absolute;
+			}
+			&.image-2{
+				top: 0;
+				left: $image-spacing;
+				position: absolute;
+			}
+			&.image-3{
+				top: 0;
+				left: $image-spacing*2;
+				position: absolute;
+			}
+		}	
+	}
+	.description{
+		display:flex;
+		align-items:center;
+		justify-content: center;
+	}
+}

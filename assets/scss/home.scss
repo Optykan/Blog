@@ -1,5 +1,7 @@
 @import 'utils';
+@import 'portfolio';
 @import '../../node_modules/foundation-sites/scss/foundation';
+
 
 #home{
 	height:100vh;
@@ -40,18 +42,19 @@
 		clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 	}
 	.parallax-no-scroll{
+		position:relative;
+		top:200%;
 		transform: translateZ(-1px) scale(2);
-		position:absolute;
 		@include breakpoint(medium up){
-			top: 100%;
 		}
 		@include breakpoint(small down){
-			top: 66.67%;
+			transform: translateZ(-1px) scale(2);
 		}
 	}
 	.home-section{
 		text-align:center;
 		margin: 0 1rem;
 		padding: 1rem;
+		position: relative;
 	}
 }
