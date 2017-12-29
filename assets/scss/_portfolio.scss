@@ -5,6 +5,11 @@ $image-spacing: 10rem;
 .portfolio{
 	position:relative;
 	top: 5rem;
+	width:80%;
+	left: 10%;
+	&:nth-child(even){
+		flex-direction: row-reverse;
+	}
 	.portfolio-image-wrapper{
 		position:relative;
 		left:7.5%;
