@@ -6,6 +6,11 @@
 .os{
 	font-family: 'Open Sans', sans-serif;
 }
+@mixin flex-center{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
 
 @mixin dim($amount){
 	&::after{ 

@@ -1,43 +1,52 @@
 @import '../../node_modules/foundation-sites/scss/foundation';
+@import 'utils';
 
 $image-spacing: 10rem;
 
 .portfolio{
 	position:relative;
-	top: 5rem;
-	width:80%;
+	margin-top: 2rem;
+	width: 80%;
 	left: 10%;
-	&:nth-child(even){
-		flex-direction: row-reverse;
+	@include breakpoint(medium only){
+		width:90%;
+		left: 5%;
+	}
+	@include breakpoint(small down){
+		width:100%;
+		left: 0%;
 	}
 	.portfolio-image-wrapper{
-		position:relative;
-		left:7.5%;
-		min-height: 500px;
+		padding-right:1rem;
+		@include flex-center;
 		.portfolio-image{
-			transform: perspective(1000px) rotateX(0deg) rotateY(50deg) rotateZ(0deg);
+			// transform: perspective(1000px) rotateX(0deg) rotateY(50deg) rotateZ(0deg);
 			box-shadow: 1px 1px 10px #cccccc;
-			top:0;
-			&.image-1{
-				top: 0;
-				left: 0;
-				position: absolute;
-			}
-			&.image-2{
-				top: 0;
-				left: $image-spacing;
-				position: absolute;
-			}
-			&.image-3{
-				top: 0;
-				left: $image-spacing*2;
-				position: absolute;
+			border: 1px solid $medium-gray;
+			@include breakpoint(medium down){
+				width:100%;
 			}
 		}	
 	}
-	.description{
-		display:flex;
-		align-items:center;
-		justify-content: center;
+	.description-wrapper{
+		padding-left:1rem;
+		@include flex-center;
+		flex-direction: column;
+		padding: 2rem 0;
+		.description{
+			text-align: left;
+			@extend .os;
+		}
+	}
+	&:nth-child(even){
+		flex-direction: row-reverse;
+		.portfolio-image-wrapper{
+			padding-right: 0;
+			padding-left:1rem;
+		}
+		.description-wrapper{
+			padding-left: 0;
+			padding-right: 1rem;
+		}
 	}
 }

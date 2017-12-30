@@ -60,14 +60,17 @@
 	}
 }
 
-hr.small-divider{
-	width: 10%;
-	border-radius:1rem;
-	&.black{
-		border: 2px solid black;
-	}
-	&.white{
-		border: 2px solid white;
+hr{
+	width:100%;
+	&.small-divider{
+		width: 10%;
+		border-radius:1rem;
+		&.black{
+			border: 2px solid black;
+		}
+		&.white{
+			border: 2px solid white;
+		}
 	}
 }
 
@@ -90,3 +93,10 @@ hr.small-divider{
 	will-change: transform;
 	transform: translateZ(0);
 }
+
+//ghost element debugging
+// * {
+// 	background: #000 !important;
+// 	color: #0f0 !important;
+// 	outline: solid #f00 1px !important;
+// }

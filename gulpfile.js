@@ -6,6 +6,7 @@ var sass        = require('gulp-sass');
 var notify      = require('gulp-notify');
 var babel       = require('gulp-babel');
 var babelcore   = require('babel-core');
+var autoprefixer= require('gulp-autoprefixer');
 
 // Static Server + watching scss/html files
 
@@ -30,6 +31,10 @@ gulp.task('sass', function() {
 	return gulp.src("assets/scss/*.scss")
 	.pipe(sass({ outputStyle: 'compressed' })
 		.on('error', sass.logError))
+	.pipe(autoprefixer({
+		browsers: ['last 2 versions'],
+		cascase: false
+	}))
 	.pipe(gulp.dest("public/stylesheets"))
 	.pipe(browserSync.stream())
 	.pipe(notify("Compiled successfully"));
