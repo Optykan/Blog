@@ -42,6 +42,7 @@ $image-spacing: 10rem;
 			padding-left: 0;
 		}
 		display:flex;
+		align-items:left;
 		flex-direction: column;
 		.project-name{
 			margin: 0;
@@ -50,9 +51,6 @@ $image-spacing: 10rem;
 			text-align: left;
 			@extend .os;
 		}
-	}
-	.visit-site{
-
 	}
 	&:nth-child(even){
 		flex-direction: row-reverse;
@@ -78,3 +76,31 @@ $image-spacing: 10rem;
 		}
 	}
 }
+
+// @include breakpoint(retina){
+// 	.portfolio{
+// 		width:100%;
+// 		left: 0;
+// 		.portfolio-image-wrapper{
+// 			width:100%;
+// 			padding-right: 0;
+// 			.portfolio-image{
+// 				width:100%;
+// 			}
+// 		}
+// 		.description-wrapper{
+// 			width:100%;
+// 			padding-left: 0;
+// 		}
+// 		&:nth-child(even){
+// 			.portfolio-image-wrapper{
+// 				padding-right: 0;
+// 				padding-left: 0;
+// 			}
+// 			.description-wrapper{
+// 				padding-left: 0;
+// 				padding-right: 0;
+// 			}
+// 		}
+// 	}
+// }
