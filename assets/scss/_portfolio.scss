@@ -5,7 +5,7 @@ $image-spacing: 10rem;
 
 .portfolio{
 	position:relative;
-	margin-top: 2rem;
+	margin-top: 3rem;
 	width: 80%;
 	left: 10%;
 	@include breakpoint(medium only){
@@ -17,7 +17,12 @@ $image-spacing: 10rem;
 		left: 0%;
 	}
 	.portfolio-image-wrapper{
-		padding-right:1rem;
+		@include breakpoint(xlarge down){
+			padding-right:1rem;
+		}
+		@include breakpoint(small down){
+			padding-right: 0;
+		}
 		@include flex-center;
 		.portfolio-image{
 			// transform: perspective(1000px) rotateX(0deg) rotateY(50deg) rotateZ(0deg);
@@ -29,24 +34,47 @@ $image-spacing: 10rem;
 		}	
 	}
 	.description-wrapper{
-		padding-left:1rem;
-		@include flex-center;
+		padding-top: 2rem;
+		@include breakpoint(xlarge down){
+			padding-left:1rem;
+		}
+		@include breakpoint(small down){
+			padding-left: 0;
+		}
+		display:flex;
 		flex-direction: column;
-		padding: 2rem 0;
+		.project-name{
+			margin: 0;
+		}
 		.description{
 			text-align: left;
 			@extend .os;
 		}
 	}
+	.visit-site{
+
+	}
 	&:nth-child(even){
 		flex-direction: row-reverse;
-		.portfolio-image-wrapper{
-			padding-right: 0;
-			padding-left:1rem;
+		@include breakpoint(xlarge down){
+			.portfolio-image-wrapper{
+				padding-right: 0;
+				padding-left:1rem;
+			}
+			.description-wrapper{
+				padding-left: 0;
+				padding-right: 1rem;
+			}
 		}
-		.description-wrapper{
-			padding-left: 0;
-			padding-right: 1rem;
+		@include breakpoint(small down){
+			.portfolio-image-wrapper{
+				padding-right: 0;
+				padding-left: 0;
+			}
+			.description-wrapper{
+				padding-left: 0;
+				padding-right: 0;
+			}
 		}
 	}
 }

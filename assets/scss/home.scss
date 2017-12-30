@@ -66,6 +66,9 @@
 		font-size: 2rem;
 		position:relative;
 		top: 7rem;
+		@include breakpoint(small down){
+			top: 3rem;
+		}
 		.arrow{
 			left: 0;
 			color: rgba(0,0,0,0.1);
