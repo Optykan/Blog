@@ -97,9 +97,38 @@ hr{
 	transform: translateZ(0);
 }
 
+.wow{
+	visibility: hidden;
+}
+
+.section-header{
+	text-transform:uppercase;
+	font-weight: 600;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.section{
+	@include flex-center;
+	flex-direction: column;
+	max-width:980px;
+	width:100%;
+	padding: 5rem 3rem;
+	border-bottom: 1px solid $light-gray;
+	p{
+
+	}
+	&:first-child{
+		padding-top: 1rem;
+	}
+	.ion:first-child{
+		font-size: 1.5rem;
+	}
+}
+
 //ghost element debugging
 // * {
-// 	background: #000 !important;
-// 	color: #0f0 !important;
-// 	outline: solid #f00 1px !important;
-// }
+	// 	background: #000 !important;
+	// 	color: #0f0 !important;
+	// 	outline: solid #f00 1px !important;
+	// }

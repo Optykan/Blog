@@ -2,7 +2,7 @@
 @import 'portfolio';
 @import '../../node_modules/foundation-sites/scss/foundation';
 
-$clip-height: 4rem;
+$clip-height: 5rem;
 $hero-height: 80%;
 
 #home{
@@ -37,9 +37,9 @@ $hero-height: 80%;
 		}
 
 		@include gradient-dim;
-		background: url('https://picsum.photos/1920/1080?random') no-repeat center center fixed;
+		background: url('/images/low-poly-texture-30.png') no-repeat center center fixed;
 		background-size: cover;
-		clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4rem), 0 100%);
+		clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$clip-height}), 0 100%);
 	}
 	.home-section{
 		-webkit-backface-visibility: hidden;
@@ -48,6 +48,12 @@ $hero-height: 80%;
 		padding: 4rem 1rem;
 		position: relative;
 		top: 75%;
+		width:100%;
+		box-sizing: content-box;
+		@include flex-center;
+		flex-direction: column;
+		background: $white;
+
 		@include breakpoint(small down){
 			top: calc(#{$hero-height} - #{$clip-height});
 		}
@@ -71,14 +77,23 @@ $hero-height: 80%;
 				// color: $medium-gray;
 				position:absolute;
 				top: 0.75rem;
-				animation-delay: 1s;
+				animation-delay: 0.5s;
 			}
 			&:nth-child(3){
 				// color: $white;
 				position:absolute;
 				top: 1.5rem;
-				animation-delay: 2s;
+				animation-delay: 1s;
 			}		
+		}
+	}
+	.about{
+		// color: $black;
+		.ion{
+			font-size: 2rem;
+		}
+		p{
+			line-height: 2;
 		}
 	}
 }

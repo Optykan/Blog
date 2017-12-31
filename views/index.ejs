@@ -1,4 +1,4 @@
-<% var stylesheets = ['/stylesheets/home.css', '/stylesheets/parallax.css'] %>
+<% var stylesheets = ['/stylesheets/home.css', '/stylesheets/parallax.css', '/stylesheets/animate.css'] %>
 <% include partials/header %>
 
 <% include partials/navbar %>
@@ -18,13 +18,23 @@
 		</div>
 	</div>
 	<section class="parallax-static home-section">
-		<h3>Portfolio</h3>
-		<hr class="small-divider black"/>
-		<% include partials/portfolio-section %>
-		<% include partials/portfolio-section %>
-		<h1>About me</h1>
-	</section>
-</div>
+		<div class="section about">
+			<i class="ion ion-ios-bookmarks-outline"></i>
+			<h5 class="section-header">About</h5>
+			<!-- <hr class="small-divider black"/> -->
+			<p class="os">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dolor orci, malesuada a cursus porttitor, lacinia at lacus. In lectus nunc, vestibulum tincidunt orci eget, blandit dictum nisl. Sed blandit id risus non euismod. Sed imperdiet orci urna, sit amet accumsan neque dictum volutpat. Suspendisse lacinia purus enim, in volutpat ex aliquam vitae. Morbi feugiat interdum tellus, nec varius ante volutpat et. Maecenas ultrices lorem justo, vel bibendum diam pulvinar a. Cras et nulla dapibus, placerat velit eget, imperdiet nibh. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eget faucibus nulla. Fusce scelerisque vestibulum finibus. Nam tempor, lectus sed eleifend lobortis, sapien nulla laoreet erat, quis hendrerit nisi arcu a mauris. Nunc lorem mauris, consequat vitae lectus id, porta luctus dui. </p>
+		</div>
+		<div class="section">
+			<i class="ion ion-edit"></i>
+			<h5 class="section-header">Portfolio</h5>
+			<hr class="small-divider black"/>
+			<% projects.forEach(project=>{ %>
+				<% include partials/portfolio-section %>
+				<% }) %>
+				<h1>About me</h1>
+			</div>
+		</section>
+	</div>
 
-<% var scripts=['/javascripts/home.js'] %>
-<% include partials/footer %>
+	<% var scripts=['https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', '/javascripts/home.js'] %>
+	<% include partials/footer %>
