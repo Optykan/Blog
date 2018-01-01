@@ -88,7 +88,11 @@ hr{
 	}
 	a{
 		padding: 0 1.5rem;
-		color: white;
+		color: $white;
+		transition: color 0.5s ease;
+		&:hover{
+			color: $dark-gray;
+		}
 	}
 }
 
@@ -101,12 +105,6 @@ hr{
 	visibility: hidden;
 }
 
-.section-header{
-	text-transform:uppercase;
-	font-weight: 600;
-	margin-top: 1.5rem;
-	margin-bottom: 1.5rem;
-}
 
 .section{
 	@include flex-center;
@@ -114,7 +112,13 @@ hr{
 	max-width:980px;
 	width:100%;
 	padding: 5rem 3rem;
-	border-bottom: 1px solid $light-gray;
+	// border-bottom: 1px solid $light-gray;
+	.section-header{
+		text-transform:uppercase;
+		font-weight: 600;
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
 	p{
 
 	}
@@ -123,6 +127,10 @@ hr{
 	}
 	.ion:first-child{
 		font-size: 1.5rem;
+	}
+
+	&+hr{
+		width: 90%;
 	}
 }
 
