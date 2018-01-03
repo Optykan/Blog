@@ -35,6 +35,43 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var mongoOptions={
+	url: process.env.MONGO_DB_URL
+}
+app.use(session({
+	store: new MongoStore(mongoOptions),
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false
+}))
+app.use(passport.initialize());
+
+// auth stuff
+passport.use(new GoogleStrategy({
+	clientID: process.env.GOOGLE_CLIENT_ID,
+	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+	callbackURL: process.env.PASSPORT_GOOGLE_CALLBACK
+},
+function(token, tokenSecret, profile, done) {
+	User.create({ googleId: profile.id }, function (err, user) {
+		return done(err, user);
+	});
+	User.findOrCreate(profile).then(user=>{
+		return done(null, user)
+	});
+}))
+
+passport.serializeUser(function(user, done) {
+	console.log(user)
+	done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+	User.findById(id, function(err, user) {
+		done(err, user);
+	});
+});
+
 app.use('/', index);
 app.use('/blog', blog);
 app.use('/users', users);
@@ -59,7 +96,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 var mongoOptions={
 	url: process.env.MONGO_DB_URL
@@ -86,6 +122,5 @@ function(token, tokenSecret, profile, done) {
 		return done(null, profile)
 	});
 }))
-
 
 module.exports = app;

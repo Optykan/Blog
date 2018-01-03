@@ -6,6 +6,9 @@ const PermissionLevel = {
 }
 
 class User{
+	constructor(id){
+		this.id=id
+	}
 	update(){
 
 	}
@@ -13,13 +16,21 @@ class User{
 
 	}
 	static findOrCreate(user){
-		console.log(user.id)
-		return User.create(user)
+		console.log(user)
+		let userFromDB = User.findById(user.id)
+
+		if(userFromDB){
+			return userFromDB
+		}else{
+			return User.create(user)
+		}
 		// return Mongo.find({"_id": user.id}, 'users')
 
 	}
 	static create(user){
-		return Mongo.update({"_id": user.id}, user, 'users')
+		return Mongo.insert(user, 'users')
+		// console.log(result)
+		// return result
 		// return new Promise((resolve, reject)=>{
 		// 	collection.updateOne(...postParams, (err, result)=>{
 		// 		if(err)
@@ -30,7 +41,10 @@ class User{
 		// })
 	}
 	static find(user){
-		return Mongo.find({"_id": user.id})
+		return User.findById(user.id)
+	}
+	static findById(id){
+		return Mongo.find({"_id": id}, 'users')	
 	}
 }
 

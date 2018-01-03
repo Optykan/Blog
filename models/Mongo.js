@@ -1,5 +1,6 @@
 require('dotenv').config()
 var MongoClient = require('mongodb').MongoClient
+const User = require('./User')
 
 // var MongoClient = require('mongoskin')
 // var dbConnection = MongoClient.db(process.env.MONGO_DB_URL)
@@ -54,6 +55,20 @@ class Mongo{
 				}
 			})
 		})
+	}
+
+	insert(data, collectionName){
+		let collection = this.connection.collection(collectionName)
+
+		return this.execute([data], collection.insertOne)
+
+		// return new Promise((resolve, reject)=>{
+		// 	collection.insert(data, (err, result)=>{
+		// 		if(err){
+
+		// 		}
+		// 	})
+		// })
 	}
 
 	update(identifier, newData, collectionName, upsert = true){
