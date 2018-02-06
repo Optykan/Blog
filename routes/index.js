@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 			title: 'Avante Landscaping',
 			image: '/images/portfolio/avante-1.jpg',
 			description: 'some words here',
-			link: 'https://avantelandscaping.com'	
+			link: 'http://avantelandscaping.com'	
 		},{
 			title: 'Unionville Skating Club',
 			image: '/images/portfolio/usc-1.jpg',

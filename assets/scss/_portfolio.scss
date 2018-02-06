@@ -76,6 +76,7 @@ $timeline-circle-top: 6.5rem;
 			width: $timeline-hover-radius*2 !important;
 			height: $timeline-hover-radius*2 !important;
 			border: 1.5px solid $primary-color !important;
+			box-shadow: 0px 0px 10px $medium-gray;
 		}
 	}
 	&:nth-of-type(odd){
