@@ -2,11 +2,27 @@
 @import 'utils';
 
 $image-spacing: 10rem;
+$timeline-padding: 2rem;
+$timeline-circle-radius: 8px;
+$timeline-hover-radius: $timeline-circle-radius+2px;
+$timeline-circle-top: 6.5rem;
+
+@mixin timeline-circle(){
+	content: '';
+	position:absolute;
+	color: black;
+	width: $timeline-circle-radius*2;
+	height: $timeline-circle-radius*2;
+	border-radius: 50%;
+	border: 1.5px solid $dark-gray;
+	background: white;
+	top: $timeline-circle-top;
+}
 
 .portfolio{
 	position:relative;
-	margin-top: 3rem;
 	width:100%;
+	margin-top:1rem;
 	@include breakpoint(medium only){
 		width:90%;
 	}
@@ -16,7 +32,7 @@ $image-spacing: 10rem;
 	.portfolio-image-wrapper{
 		box-sizing: border-box;
 		@include breakpoint(xlarge down){
-			padding-right:1rem;
+			padding-right:2rem;
 		}
 		@include breakpoint(small down){
 			padding-right: 0;
@@ -32,10 +48,11 @@ $image-spacing: 10rem;
 		}	
 	}
 	.description-wrapper{
+		padding-top: 3rem;
+		position:relative;
 		box-sizing: border-box;
-		padding-top: 2rem;
 		@include breakpoint(xlarge down){
-			padding-left:1rem;
+			padding-left: $timeline-padding;
 		}
 		@include breakpoint(small down){
 			padding-left: 0;
@@ -50,17 +67,56 @@ $image-spacing: 10rem;
 			text-align: left;
 			@extend .os;
 		}
+		&::after{
+			transition: 0.5s all ease;
+		}
+		&:hover::after{
+			//sorry! its very important!
+			top: calc(#{$timeline-circle-top} - #{$timeline-hover-radius}/4) !important;
+			width: $timeline-hover-radius*2 !important;
+			height: $timeline-hover-radius*2 !important;
+			border: 1.5px solid $primary-color !important;
+		}
+	}
+	&:nth-of-type(odd){
+		@include breakpoint(medium up){
+			.description-wrapper{
+				border-left: 1px solid $medium-gray;
+				&::after{
+					@include timeline-circle;
+					left: -$timeline-circle-radius;
+				}
+				&:hover::after{
+					left: -$timeline-hover-radius;
+				}
+			}	
+		}
 	}
 	&:nth-of-type(even){
 		flex-direction: row-reverse;
+		.description-wrapper{
+			align-items:right;
+			&::after{
+				@include timeline-circle;
+				right: -$timeline-circle-radius;
+			}
+			&:hover::after{
+				right: -$timeline-hover-radius;
+			}
+		}
+		@include breakpoint(medium up){
+			.portfolio-image-wrapper{
+				border-left: 1px solid $medium-gray;
+			}	
+		}
 		@include breakpoint(xlarge down){
 			.portfolio-image-wrapper{
 				padding-right: 0;
-				padding-left:1rem;
+				padding-left: $timeline-padding;
 			}
 			.description-wrapper{
 				padding-left: 0;
-				padding-right: 1rem;
+				padding-right: $timeline-padding;
 			}
 		}
 		@include breakpoint(small down){
@@ -77,29 +133,29 @@ $image-spacing: 10rem;
 }
 
 // @include breakpoint(retina){
-// 	.portfolio{
-// 		width:100%;
-// 		left: 0;
-// 		.portfolio-image-wrapper{
-// 			width:100%;
-// 			padding-right: 0;
-// 			.portfolio-image{
-// 				width:100%;
-// 			}
-// 		}
-// 		.description-wrapper{
-// 			width:100%;
-// 			padding-left: 0;
-// 		}
-// 		&:nth-child(even){
-// 			.portfolio-image-wrapper{
-// 				padding-right: 0;
-// 				padding-left: 0;
-// 			}
-// 			.description-wrapper{
-// 				padding-left: 0;
-// 				padding-right: 0;
-// 			}
-// 		}
-// 	}
+	// 	.portfolio{
+		// 		width:100%;
+		// 		left: 0;
+		// 		.portfolio-image-wrapper{
+			// 			width:100%;
+			// 			padding-right: 0;
+			// 			.portfolio-image{
+				// 				width:100%;
+				// 			}
+				// 		}
+				// 		.description-wrapper{
+					// 			width:100%;
+					// 			padding-left: 0;
+					// 		}
+					// 		&:nth-child(even){
+						// 			.portfolio-image-wrapper{
+							// 				padding-right: 0;
+							// 				padding-left: 0;
+							// 			}
+							// 			.description-wrapper{
+								// 				padding-left: 0;
+								// 				padding-right: 0;
+								// 			}
+								// 		}
+								// 	}
 // }

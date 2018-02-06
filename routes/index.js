@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 			link: 'https://avantelandscaping.com'	
 		},{
 			title: 'Unionville Skating Club',
-			image: 'http://via.placeholder.com/300x300',
+			image: '/images/portfolio/usc-1.jpg',
 			description: 'more words here',
 			link: 'https://unionvilleskatingclub.com'
 		},{
