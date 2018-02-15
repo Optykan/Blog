@@ -31,12 +31,6 @@ $timeline-circle-top: 6.5rem;
 	}
 	.portfolio-image-wrapper{
 		box-sizing: border-box;
-		@include breakpoint(xlarge down){
-			padding-right:2rem;
-		}
-		@include breakpoint(small down){
-			padding-right: 0;
-		}
 		@include flex-center;
 		.portfolio-image{
 			// transform: perspective(1000px) rotateX(0deg) rotateY(50deg) rotateZ(0deg);
@@ -51,12 +45,6 @@ $timeline-circle-top: 6.5rem;
 		padding-top: 3rem;
 		position:relative;
 		box-sizing: border-box;
-		@include breakpoint(xlarge down){
-			padding-left: $timeline-padding;
-		}
-		@include breakpoint(small down){
-			padding-left: 0;
-		}
 		display:flex;
 		align-items:left;
 		flex-direction: column;
@@ -83,6 +71,8 @@ $timeline-circle-top: 6.5rem;
 		@include breakpoint(medium up){
 			.description-wrapper{
 				border-left: 1px solid $medium-gray;
+				padding-right: 0;
+				padding-left: $timeline-padding;
 				&::after{
 					@include timeline-circle;
 					left: -$timeline-circle-radius;
@@ -91,6 +81,12 @@ $timeline-circle-top: 6.5rem;
 					left: -$timeline-hover-radius;
 				}
 			}	
+			.portfolio-image-wrapper{
+				padding-left: 0;
+				padding-right: $timeline-padding;
+			}
+			.description-wrapper{
+			}
 		}
 	}
 	&:nth-of-type(even){
@@ -108,26 +104,12 @@ $timeline-circle-top: 6.5rem;
 		@include breakpoint(medium up){
 			.portfolio-image-wrapper{
 				border-left: 1px solid $medium-gray;
-			}	
-		}
-		@include breakpoint(xlarge down){
-			.portfolio-image-wrapper{
 				padding-right: 0;
 				padding-left: $timeline-padding;
-			}
+			}	
 			.description-wrapper{
 				padding-left: 0;
 				padding-right: $timeline-padding;
-			}
-		}
-		@include breakpoint(small down){
-			.portfolio-image-wrapper{
-				padding-right: 0;
-				padding-left: 0;
-			}
-			.description-wrapper{
-				padding-left: 0;
-				padding-right: 0;
 			}
 		}
 	}
