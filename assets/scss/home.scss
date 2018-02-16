@@ -4,6 +4,7 @@
 
 $clip-height: 5rem;
 $hero-height: 80%;
+$header-height: 600px;
 
 #home{
 	.header-text{
@@ -26,6 +27,9 @@ $hero-height: 80%;
 			@extend .os;
 		}
 	}
+	.header-section{
+		min-height: $header-height;
+	}
 	.hero-header{
 		@include breakpoint(medium up){
 			height: 66.67%;
@@ -35,6 +39,7 @@ $hero-height: 80%;
 			height: 100%;
 			top: -50%;
 		}
+		min-height: $header-height;
 
 		@include gradient-dim;
 		background: url('/images/low-poly-texture-30.png') no-repeat center center fixed;
@@ -47,7 +52,7 @@ $hero-height: 80%;
 		text-align:center;
 		padding: 4rem 1rem;
 		position: relative;
-		top: 75%;
+		top: 25%;
 		width:100%;
 		box-sizing: content-box;
 		@include flex-center;
@@ -100,23 +105,23 @@ $hero-height: 80%;
 
 //retina and high pixel density weirdness
 // @include breakpoint(retina){
-// 	#home{
-// 		background-color: red;
-// 		.header-text{
-// 			height:50%;
-// 		}
-// 		.hero-header{
-// 			height: 50%;
-// 			top: -25%;
-// 		}
-// 		.parallax-no-scroll{
-// 			transform: translateZ(-1px) scale(2);
-// 		}
-// 		.home-section{
-// 			top: 45%;
-// 		}
-// 		.down-arrows{
-// 			top: 3rem;
-// 		}
-// 	}
-// }
+	// 	#home{
+		// 		background-color: red;
+		// 		.header-text{
+			// 			height:50%;
+			// 		}
+			// 		.hero-header{
+				// 			height: 50%;
+				// 			top: -25%;
+				// 		}
+				// 		.parallax-no-scroll{
+					// 			transform: translateZ(-1px) scale(2);
+					// 		}
+					// 		.home-section{
+						// 			top: 45%;
+						// 		}
+						// 		.down-arrows{
+							// 			top: 3rem;
+							// 		}
+							// 	}
+							// }
