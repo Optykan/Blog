@@ -7,7 +7,7 @@ $hero-height: 80%;
 $header-height: 600px;
 
 #home{
-	background: black;
+	font-family: 'Open Sans', sans-serif;
 	.header-text{
 		@include flex-center;
 		flex-direction: column;
@@ -49,14 +49,11 @@ $header-height: 600px;
 	}
 	.section{
 		clip-path: polygon(0 4rem, 100% 0, 100% calc(100% - #{$clip-height}), 0 100%);
-		&:not(:first-child){
-			margin-top:5rem;
-		}
-		&:nth-child(odd){
+		&:nth-of-type(odd){
 			background: $white;
 		}
-		&:nth-child(even){
-			background: $light-gray;
+		&:nth-of-type(even){
+			background: darken($white, 3%);
 		}
 	}
 	.home-section{
@@ -108,9 +105,6 @@ $header-height: 600px;
 	.about{
 		.ion{
 			font-size: 2rem;
-		}
-		p{
-			line-height: 2;
 		}
 	}
 }
