@@ -24,7 +24,6 @@ $header-height: 600px;
 		}
 		#bio{
 			margin-top: 0.5rem;
-			// font-size: 1.1rem;
 			@extend .os;
 		}
 	}
@@ -89,13 +88,11 @@ $header-height: 600px;
 			&:nth-child(1){
 			}
 			&:nth-child(2){
-				// color: $medium-gray;
 				position:absolute;
 				top: 0.75rem;
 				animation-delay: 0.5s;
 			}
 			&:nth-child(3){
-				// color: $white;
 				position:absolute;
 				top: 1.5rem;
 				animation-delay: 1s;
@@ -108,26 +105,3 @@ $header-height: 600px;
 		}
 	}
 }
-
-//retina and high pixel density weirdness
-// @include breakpoint(retina){
-	// 	#home{
-		// 		background-color: red;
-		// 		.header-text{
-			// 			height:50%;
-			// 		}
-			// 		.hero-header{
-				// 			height: 50%;
-				// 			top: -25%;
-				// 		}
-				// 		.parallax-no-scroll{
-					// 			transform: translateZ(-1px) scale(2);
-					// 		}
-					// 		.home-section{
-						// 			top: 45%;
-						// 		}
-						// 		.down-arrows{
-							// 			top: 3rem;
-							// 		}
-							// 	}
-							// }
