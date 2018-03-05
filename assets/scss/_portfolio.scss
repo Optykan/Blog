@@ -58,14 +58,6 @@ $timeline-circle-top: 6.5rem;
 		&::after{
 			transition: 0.5s all ease;
 		}
-		&:hover::after{
-			//sorry! its very important!
-			top: calc(#{$timeline-circle-top} - #{$timeline-hover-radius}/4) !important;
-			width: $timeline-hover-radius*2 !important;
-			height: $timeline-hover-radius*2 !important;
-			border: 1.5px solid $primary-color !important;
-			box-shadow: 0px 0px 10px $medium-gray;
-		}
 	}
 	&:nth-of-type(odd){
 		@include breakpoint(medium up){
@@ -76,9 +68,6 @@ $timeline-circle-top: 6.5rem;
 				&::after{
 					@include timeline-circle;
 					left: -$timeline-circle-radius;
-				}
-				&:hover::after{
-					left: -$timeline-hover-radius;
 				}
 			}	
 			.portfolio-image-wrapper{
@@ -97,9 +86,6 @@ $timeline-circle-top: 6.5rem;
 				@include timeline-circle;
 				right: -$timeline-circle-radius;
 			}
-			&:hover::after{
-				right: -$timeline-hover-radius;
-			}
 		}
 		@include breakpoint(medium up){
 			.portfolio-image-wrapper{
@@ -111,6 +97,21 @@ $timeline-circle-top: 6.5rem;
 				padding-left: 0;
 				padding-right: $timeline-padding;
 			}
+		}
+	}
+	&:hover{
+		&:nth-of-type(even) .description-wrapper::after{
+			right: -$timeline-hover-radius;
+		}
+		&:nth-of-type(odd) .description-wrapper::after{
+			left: -$timeline-hover-radius;
+		}
+		.description-wrapper::after{
+			top: calc(#{$timeline-circle-top} - #{$timeline-hover-radius}/4) !important;
+			width: $timeline-hover-radius*2 !important;
+			height: $timeline-hover-radius*2 !important;
+			border: 1.5px solid $primary-color !important;
+			box-shadow: 0px 0px 10px $medium-gray;
 		}
 	}
 }

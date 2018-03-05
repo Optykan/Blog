@@ -107,9 +107,11 @@ hr{
 
 
 .section{
+	p{
+		max-width:980px;
+	}
 	@include flex-center;
 	flex-direction: column;
-	max-width:980px;
 	width:100%;
 	padding: 5rem 3rem;
 	// border-bottom: 1px solid $light-gray;
@@ -118,12 +120,14 @@ hr{
 		font-weight: 600;
 		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
-	}
-	p{
-
-	}
-	&:first-child{
-		padding-top: 1rem;
+		&::before{
+			content: '/';
+			font-size: 2.5rem;
+			height: 1rem;
+			width: 1rem;
+			padding-right: 0.5rem;
+			color: $dark-gray;
+		}
 	}
 	.ion:first-child{
 		font-size: 1.5rem;
