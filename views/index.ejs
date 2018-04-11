@@ -9,7 +9,7 @@
 			<h1 id="hi-there">Hi there.</h1>
 			<hr class="small-divider white"/>
 			<p id="bio">I'm Sam, a CS student @ UWaterloo. Nice to meet you!</p>
-			<% include partials/social %>
+			<%- include('partials/social', {color: 'white'}) -%>
 			<div class="down-arrows">
 				<i class="ion ion-ios-arrow-down arrow"></i>
 				<i class="ion ion-ios-arrow-down arrow"></i>
@@ -22,8 +22,8 @@
 			<!-- <i class="ion ion-ios-bookmarks-outline"></i> -->
 			<h5 class="section-header">About</h5>			<!-- <hr class="small-divider black"/> -->
 			<p class="os">
-				Hey, I'm Sam! I'm just your average 18 year old studying Computer Science at the University of Waterloo. If I'm not drowning in coursework you might be able to find me at a hackathon or working on some side projects. <br/></br>
-				Surprisingly have never drank a cup of coffe (yet!) 
+				Hey, I'm Sam! I'm just your average 18 year old studying Computer Science at the University of Waterloo. If I'm not drowning in coursework you might be able to find me at a hackathon or working on some side projects. <br/><br/>
+				Check out some of my stuff below! I promise some of them are interesting.
 			</p>
 		</div>
 		<div class="section">
@@ -35,10 +35,11 @@
 		</div>
 		<div class="section">
 			<h5 class="section-header">Contact</h5>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dolor orci, malesuada a cursus porttitor, lacinia at lacus. In lectus nunc, vestibulum tincidunt orci eget, blandit dictum nisl. Sed blandit id risus non euismod. Sed imperdiet orci urna, sit amet accumsan neque dictum volutpat. Suspendisse lacinia purus enim, in volutpat ex aliquam vitae. Morbi feugiat interdum tellus, nec varius ante volutpat et. Maecenas ultrices lorem justo, vel bibendum diam pulvinar a. Cras et nulla dapibus, placerat velit eget, imperdiet nibh. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eget faucibus nulla. Fusce scelerisque vestibulum finibus. Nam tempor, lectus sed eleifend lobortis, sapien nulla laoreet erat, quis hendrerit nisi arcu a mauris. Nunc lorem mauris, consequat vitae lectus id, porta luctus dui. </p>
+			<p>Questions? Opinions? Want to argue about something? Feel free to get in touch with through one of your preferred methods (from the following options, obviously)</p>
+			<%- include('partials/social', {color: 'black'}) -%>
 		</div>
 	</section>
 </div>
 
 <% var scripts=['https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', '/javascripts/home.js'] %>
-<% include partials/footer %>
+<% include partials/footer%>

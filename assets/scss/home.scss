@@ -8,6 +8,9 @@ $header-height: 600px;
 
 #home{
 	font-family: 'Open Sans', sans-serif;
+	p{
+		max-width: 960px;
+	}
 	.header-text{
 		@include flex-center;
 		flex-direction: column;
@@ -98,12 +101,5 @@ $header-height: 600px;
 				animation-delay: 1s;
 			}		
 		}
-	}
-	.about{
-		max-width:700px;
-		.ion{
-			font-size: 2rem;
-		}
-
 	}
 }

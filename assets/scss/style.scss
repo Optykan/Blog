@@ -77,22 +77,36 @@ hr{
 	}
 }
 
-.social{
-	margin-top: 1rem;
+@mixin social-color($color, $hover-col){
 	.social-link{
-		border-right: 1px solid white;
-		font-size: 2rem;
+		border-right: 1px solid $color;
 		&:last-child{
 			border-right: none;
 		}
 	}
 	a{
-		padding: 0 1.5rem;
-		color: $white;
-		transition: color 0.5s ease;
+		color: $color;
 		&:hover{
-			color: $dark-gray;
+			color: $hover-col;
 		}
+
+	}
+}
+
+.social{
+	margin-top: 1rem;
+	.social-link{
+		font-size: 2rem;
+	}
+	a{
+		padding: 0 1.5rem;
+		transition: color 0.5s ease;
+	}
+	&.white{
+		@include social-color($white, $light-gray);
+	}
+	&.black{
+		@include social-color($black, $medium-gray);
 	}
 }
 
