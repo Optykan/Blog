@@ -20,7 +20,32 @@ router.get('/', function(req, res, next) {
 			image: 'http://via.placeholder.com/300x300',
 			description: 'even more words',
 			link: 'https://project5k.ca'
-		}	
+		},{
+			title: 'Tzuyu',
+			image: 'http://via.placeholder.com/300x300',
+			description: 'It\'s basically the best discord bot there is',
+			link: 'https://github.com/Optykan/Tzuyu'
+		},{
+			title: 'Beat',
+			image: 'http://via.placeholder.com/300x300',
+			description: 'PennApps XVII Top 10! There\'s something about pitch perfect here and a riff-off',
+			link: 'https://github.com/kpsuperplane/pennapps-beat/' 
+		},{
+			title: 'Project 5K',
+			image: 'http://via.placeholder.com/300x300',
+			description: 'Volunteer non-profit organization. I\'m just the web dude',
+			link: 'https://project5k.ca'
+		},{
+			title: 'TeachAssist Scraper',
+			image: 'http://via.placeholder.com/300x300',
+			description: 'Using 100% legitimate approved methods, it attempts to scrape your marks from YRDSB TeachAssist.',
+			link: 'https://github.com/Optykan/TeachAssist'
+		},{
+			title: 'Boilerplate',
+			image: 'http://via.placeholder.com/300x300',
+			description: 'React + Foundation6 + Sass + Gulp.js + Browserify + Express.js + Babel makes for easy site setup. Just clone it and get started!',
+			link: 'https://github.com/Optykan/site-boilerplate'
+		}
 		]
 	});
 });

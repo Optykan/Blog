@@ -128,6 +128,9 @@ hr{
 	flex-direction: column;
 	width:100%;
 	padding: 6rem 3rem;
+	&:nth-child(2n) .section-header::before{
+		animation-delay: 2s;
+	}
 	.section-header{
 		text-transform:uppercase;
 		font-weight: 400;
@@ -141,6 +144,7 @@ hr{
 			width: 1rem;
 			padding-right: 0.5rem;
 			color: $dark-gray;
+			animation: graywhitecycle 10s ease infinite;
 		}
 	}
 	.ion:first-child{
