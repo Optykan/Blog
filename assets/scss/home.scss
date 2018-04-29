@@ -45,7 +45,7 @@ $header-height: 600px;
 		min-height: $header-height;
 
 		@include gradient-dim;
-		background: url('/images/low-poly-texture-30.png') no-repeat center center fixed;
+		background: url('/images/low-poly-texture-30.png') no-repeat center center;
 		background-size: cover;
 		clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$clip-height}), 0 100%);
 	}
