@@ -27,6 +27,12 @@ process.on('uncaughtException', function (exception) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// ejs helper functions
+app.locals.random = function(low, high){
+	// hopefully this works
+	return Math.floor(Math.random() * (high-low)) + low;
+};
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
