@@ -330,11 +330,11 @@ $card-background: $white;
 $card-font-color: $body-font-color;
 $card-divider-background: $light-gray;
 $card-border: none;
-// $card-shadow: 2px 2px 10px $light-gray;
-$card-shadow: none;
+$card-shadow: 2px 2px 10px $light-gray;
+// $card-shadow: none;
 $card-border-radius: 3px;
 // $card-padding: 2rem;
-$card-padding: $global-padding;
+$card-padding: 24px 16px;
 $card-margin-bottom: $global-margin;
 
 // 15. Close Button
@@ -861,10 +861,7 @@ $topbar-unstack-breakpoint: medium;
 $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
-$grid-margin-gutters: (
-  small: 2rem,
-  medium: 10rem
-  );
+$grid-margin-gutters: 2rem;
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;

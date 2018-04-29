@@ -3,7 +3,8 @@
 
 @import '../../node_modules/foundation-sites/scss/foundation';
 @import 'settings';
-@import 'utils';
+@import 'utils'; 
+@import 'components/cards';
 @include foundation-everything;
 
 .noborder{
@@ -91,7 +92,7 @@ hr{
 		}
 
 	}
-}
+} 
 
 .social{
 	margin-top: 1rem;
@@ -155,6 +156,8 @@ hr{
 		width: 90%;
 	}
 }
+
+
 
 //ghost element debugging
 // * {

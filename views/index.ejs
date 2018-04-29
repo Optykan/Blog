@@ -21,19 +21,22 @@
 		<div class="section about">
 			<!-- <i class="ion ion-ios-bookmarks-outline"></i> -->
 			<h5 class="section-header">About</h5>			<!-- <hr class="small-divider black"/> -->
-			<p class="os">
+			<p class="os text-center">
 				Hey, I'm Sam! I'm just your average 18 year old studying Computer Science at the University of Waterloo. If I'm not drowning in coursework you might be able to find me at a hackathon or working on some side projects. <br/><br/>
 				Check out some of my stuff below! I promise some of them are interesting.
 			</p>
 		</div>
 		<div class="section">
-			<!-- <i class="ion ion-edit"></i> -->
 			<h5 class="section-header">Portfolio</h5>
-			<% projects.forEach(project=>{ %>
-			<% include partials/portfolio-section %>
+			<div class="grid-x grid-margin-x grid-margin-y portfolio-section" data-equalizer>
+			<% projects.forEach(data=>{ %>
+				<div class="cell xlarge-4 large-6 medium-12 small-12" data-equalizer-watch>
+				<% include partials/card %>
+				</div>
 			<% }) %>
+			</div>
 		</div>
-		<div class="section">
+		<div class="section text-center">
 			<h5 class="section-header">Contact</h5>
 			<p>Questions? Opinions? Want to argue about something? Feel free to get in touch with through one of your preferred methods (from the following options, obviously)</p>
 			<%- include('partials/social', {color: 'black'}) -%>

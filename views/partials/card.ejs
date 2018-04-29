@@ -1,0 +1,21 @@
+<% // when you include this pass an object with fields structured as
+//   data
+//      .title
+//      .description
+//      .image
+//
+//
+//
+
+%>
+
+<div class="card">
+	<img src="<%=data.image%>">
+	<div class="card-section">
+		<h4 class="card-title"><%=data.title%></h4>
+		<% if(typeof data.subtitle != 'undefined'){ %>
+			<h6 class="card-subtitle"><%=data.subtitle%></h6>
+			<% } %>
+		<p><%=data.description%></p>
+	</div>
+</div>

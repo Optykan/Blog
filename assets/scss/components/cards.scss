@@ -1,0 +1,12 @@
+.card{
+	height:100%;
+	div{
+		padding-bottom: 16px;
+	}
+	&-title{
+		font-size: 24px;
+	}
+	&-subtitle{
+		font-size: 14px;
+	}
+}
