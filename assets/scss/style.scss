@@ -116,11 +116,6 @@ hr{
 	transform: translateZ(0);
 }
 
-.wow{
-	visibility: hidden;
-}
-
-
 .section{
 	p{
 		max-width:980px;
@@ -128,7 +123,9 @@ hr{
 	@include flex-center;
 	flex-direction: column;
 	width:100%;
-	padding: 6rem 3rem;
+	// margin: 6rem 3rem;
+	padding: 6rem 3rem; 
+	box-sizing: border-box; // i hate this
 	&:nth-child(2n) .section-header::before{
 		animation-delay: 2s;
 	}
