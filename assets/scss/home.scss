@@ -62,7 +62,7 @@ $max-width: 960px;
 	}
 	.home-section{
 		clip-path: polygon(0 4rem, 100% 0, 100% 100%, 0 100%);
-		-webkit-backface-visibility: hidden;
+		// -webkit-backface-visibility: hidden;
 		padding: 0rem 1rem;
 		position: relative;
 		top: 20%;

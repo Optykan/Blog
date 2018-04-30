@@ -1,11 +1,16 @@
+$card-grow-time: 0.5s;
+$title-size: 24px;
+$subtitle-size: 14px;
+
 .card{
 	height:100%;
-	transition: transform 1s ease, border 0.5s ease;
-	// position: relative;
-	// transform: scale(1.0);
-	// -webkit-backface-visibility:hidden;
-	// -webkit-font-smoothing: subpixel-antialiased;
-	// transition: all 1s ease;
+	width: 100%;
+	font-size: 100%;
+	// transition: transform $card-grow-time ease, border-color $card-grow-time ease, width $card-grow-time ease, height $card-grow-time ease, font-size $card-grow-time ease;
+	transform: all $card-grow-time linear;
+    transform: perspective(1px) translateZ(0);
+	-webkit-backface-visibility: hidden;
+	transition: all 1s ease;
 	.card div{
 		padding-bottom: 16px;
 	}
@@ -13,10 +18,12 @@
 		min-height:300px;
 	}
 	&-title{
-		font-size: 24px;
+		font-size: $title-size;
+		transition: font-size $card-grow-time linear;
 	}
 	&-subtitle{
-		font-size: 14px;
+		font-size: $subtitle-size;
+		transition: font-size $card-grow-time linear;
 	} 
 	.card-section{
 		display:flex;
@@ -27,16 +34,32 @@
 		padding:1rem;
 		text-align:center;
 		border-top: 1px solid $light-gray;
-		transition: background-color 1s ease;
+		transition: background-color 0.5s ease;
 		&:hover{
 			background-color: $light-gray;
 		}
 	}
 	&:hover{
-		transform: scale(1.1);
+		-webkit-filter: blur(0);
+		filter: blur(0);
+		// -webkit-transform: scale3d(1.03125, 1.03125, 1.0) translateZ(0);
+		// transform: scale(1.03125) translateZ(0);
+		margin-left: -2.5%;
+		margin-top: -2.5%;
+		// transform: translateX(-2.5%) translateY(-2.5%) translateZ(0);
+		-webkit-backface-visibility: hidden;
+		width: 105%;
+		height: 105%;
+		box-shadow: 4px 4px 15px $medium-gray;
 		border: 1px solid $primary-color;
 		animation: border-pulse 3s linear 0s infinite alternate;
-		animation-fill-mode: forwards;
+		animation-fill-mode: both;
+		.card-title{
+			font-size: $title-size*1.05;
+		}
+		.card-subtitle{
+			font-size: $subtitle-size*1.05;
+		}
 	}
 }
 

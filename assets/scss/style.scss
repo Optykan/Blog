@@ -123,9 +123,14 @@ hr{
 	@include flex-center;
 	flex-direction: column;
 	width:100%;
-	// margin: 6rem 3rem;
 	padding: 6rem 3rem; 
-	box-sizing: border-box; // i hate this
+
+	//the following styles fix jittering on chrome (why chrome why)
+	box-sizing: border-box; 
+	-webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform: translateZ(0);
+
 	&:nth-child(2n) .section-header::before{
 		animation-delay: 2s;
 	}

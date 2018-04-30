@@ -1,5 +1,6 @@
 //amazing insight: https://keithclark.co.uk/articles/pure-css-parallax-websites/
 .parallax {
+	// box-sizing: content-box;
 	perspective:3px;
 	height: 100vh;
 	overflow-x: hidden;
