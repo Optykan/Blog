@@ -17,14 +17,21 @@ $subtitle-size: 14px;
 	img{
 		min-height:300px;
 	}
-	&-title{
+	.card-title{
 		font-size: $title-size;
 		transition: font-size $card-grow-time linear;
+		transition-delay: 0.1s;
 	}
-	&-subtitle{
+	.card-subtitle{
 		font-size: $subtitle-size;
 		transition: font-size $card-grow-time linear;
+		transition-delay: 0.1s;
 	} 
+	.card-description{
+		font-size: $subtitle-size;
+		transition: font-size $card-grow-time linear;
+		transition-delay: 0.1s;
+	}
 	.card-section{
 		display:flex;
 		flex-direction:column;
@@ -58,6 +65,9 @@ $subtitle-size: 14px;
 			font-size: $title-size*1.05;
 		}
 		.card-subtitle{
+			font-size: $subtitle-size*1.05;
+		}
+		.card-description{
 			font-size: $subtitle-size*1.05;
 		}
 	}

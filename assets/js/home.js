@@ -24,6 +24,12 @@ $('#home').scroll(e=>{
 	}
 })
 
+$('#credit-icon').hover(function(){
+	$(this).css('color', $(this).data('hover-color'));
+}, function(){
+	$(this).css('color', '#cacaca');
+});
+
 var wow = new WOW({
     boxClass:     'wow',      // animated element css class (default is wow)
     animateClass: 'animated', // animation css class (default is animated)

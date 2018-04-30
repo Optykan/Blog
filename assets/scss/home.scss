@@ -59,6 +59,10 @@ $max-width: 960px;
 		&:nth-of-type(even){
 			background: darken($white, 3%);
 		}
+		&:last-child{
+			clip-path: none;
+			padding: 1rem;
+		}
 	}
 	.home-section{
 		clip-path: polygon(0 4rem, 100% 0, 100% 100%, 0 100%);
@@ -105,5 +109,19 @@ $max-width: 960px;
 	}
 	.portfolio-section{
 		max-width: $max-width;
+	}
+	#credit-icon{
+		transition: color 0.5s ease;
+		color: #cacaca;
+		font-size: 1.2rem;
+	}
+	.home-footer{
+		display: flex;
+		p{
+			margin-bottom: 0;
+		}
+		.footer-right{
+			margin-left: auto;
+		}
 	}
 }
