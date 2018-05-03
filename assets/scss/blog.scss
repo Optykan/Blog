@@ -3,87 +3,87 @@
 
 $category-colour: #1abc9c;
 
-#header{
-	height: 100vh;
-	position:relative;
-	#hero-left{
-		background-image: url("../images/everest.jpg");
-		background-position: center 0px;
-		background-size: auto 200%;
-		@include gradient-dim;
-		@include breakpoint(large up){
-			overflow:hidden;
-			position:fixed;
-			height:100%;
-		}
+// #header{
+	// 	height: 100vh;
+	// 	position:relative;
+	// 	#hero-left{
+		// 		background-image: url("../images/everest.jpg");
+		// 		background-position: center 0px;
+		// 		background-size: auto 200%;
+		// 		@include gradient-dim;
+		// 		@include breakpoint(large up){
+			// 			overflow:hidden;
+			// 			position:fixed;
+			// 			height:100%;
+			// 		}
 
-		#hero-text-container{
-			position: absolute;
-			bottom: 0;
-			z-index: 99;
-			width:100%;
-			text-transform: lowercase;
-			color: white;
-			text-align:center;
-			h1{
-				font-family: 'Rochester', cursive;
-			}
-			h6{
-				font-family: 'Lato', sans-serif;
-				text-transform: uppercase;
-			}
-			@include breakpoint(medium down){
-				position: relative;
-				bottom: 0;
-				margin-top: 50%;
-			}
-		}
+			// 		#hero-text-container{
+				// 			position: absolute;
+				// 			bottom: 0;
+				// 			z-index: 99;
+				// 			width:100%;
+				// 			text-transform: lowercase;
+				// 			color: white;
+				// 			text-align:center;
+				// 			h1{
+					// 				font-family: 'Rochester', cursive;
+					// 			}
+					// 			h6{
+						// 				font-family: 'Lato', sans-serif;
+						// 				text-transform: uppercase;
+						// 			}
+						// 			@include breakpoint(medium down){
+							// 				position: relative;
+							// 				bottom: 0;
+							// 				margin-top: 50%;
+							// 			}
+							// 		}
 
-	}
-	
-}
-#blog-posts{
-	@include breakpoint(large up){
-		margin-top: 4rem;
-		position:absolute;
-		right:0;
-	}
-}
+							// 	}
+							
+							// }
+							// #blog-posts{
+								// 	@include breakpoint(large up){
+									// 		margin-top: 4rem;
+									// 		position:absolute;
+									// 		right:0;
+									// 	}
+									// }
 
-.blog-post{
-	margin-bottom: 3rem;
-	.title{
-		font-weight:600;
-	}
-	.meta{
-		margin-left: 0;
-		*{
-			font-weight:600;
-			font-size: 0.9rem;
-			text-transform: uppercase;
-			font-family: 'Lato', sans-serif;
-		}
-		.date{
-			display:inline;
-		}
-		.separator{
-			margin-left:3px;
-			margin-right:2px;
-			&::after{
-				content: "|";
-				position: relative;
-				bottom: 1px;
-				color: $dark-gray;
-			}
-			
-		}
-		.category{
-			display:inline;
-			color: $category-colour;
-		}
-	}
-	a{
-		font-family: 'Lato', sans-serif;
-		text-transform: uppercase;
-	}
-}
+									// .blog-post{
+										// 	margin-bottom: 3rem;
+										// 	.title{
+											// 		font-weight:600;
+											// 	}
+											// 	.meta{
+												// 		margin-left: 0;
+												// 		*{
+													// 			font-weight:600;
+													// 			font-size: 0.9rem;
+													// 			text-transform: uppercase;
+													// 			font-family: 'Lato', sans-serif;
+													// 		}
+													// 		.date{
+														// 			display:inline;
+														// 		}
+														// 		.separator{
+															// 			margin-left:3px;
+															// 			margin-right:2px;
+															// 			&::after{
+																// 				content: "|";
+																// 				position: relative;
+																// 				bottom: 1px;
+																// 				color: $dark-gray;
+																// 			}
+																
+																// 		}
+																// 		.category{
+																	// 			display:inline;
+																	// 			color: $category-colour;
+																	// 		}
+																	// 	}
+																	// 	a{
+																		// 		font-family: 'Lato', sans-serif;
+																		// 		text-transform: uppercase;
+																		// 	}
+																		// }
