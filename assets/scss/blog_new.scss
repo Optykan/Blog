@@ -1,13 +1,38 @@
 @import '../../node_modules/foundation-sites/scss/foundation';
 @import 'utils';
+@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
 
+body{
+	padding: 5rem;
+}
 #blog-hero{
 	.header-text{
 		height: 50%;
 		min-height: 500px;
+		@include flex-center;
 		.text-wrapper{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			@include breakpoint(small only){
+				flex-direction: column
+			}
+			margin-left: 3rem;
+			*{
+				font-family: 'Source Serif Pro', serif;
+			}
+			h1{
+				font-size: 7rem;
+			}
+			h3{
+				margin-left: 1rem;
+			}
+
 			display:flex;
 			align-items: baseline;
 		}
+	}
+	.cell{
+		max-width: 300px;
 	}
 }
