@@ -4,7 +4,7 @@ var router = express.Router();
 var passport = require('passport');
 
 router.get('/google', 
-	passport.authenticate('google', { failureRedirect: '/abc' }),
+	passport.authenticate('google', { failureRedirect: '/' }),
 	function(req, res) {
 		res.redirect('/users');
 	});

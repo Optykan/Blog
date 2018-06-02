@@ -16,6 +16,7 @@ var blog = require('./routes/blog');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var posts = require('./routes/posts');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -37,7 +38,7 @@ app.locals.random = function(low, high){
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -83,6 +84,7 @@ app.use('/blog', blog);
 app.use('/users', users);
 app.use('/auth', login);
 app.use('/posts', posts);
+app.use('/api', api);
 
 
 // catch 404 and forward to error handler

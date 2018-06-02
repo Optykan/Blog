@@ -18,12 +18,15 @@ let data = {
 	</div>
 	<hr class="small-divider black"/>
 	<div class="grid-x grid-x grid-margin-x grid-margin-y" id="blog-body">
-		<% for (let i=0; i < 5; i++){%>
+		<% for (let i=0; i < 5; i++){ %>
 		<div class="cell xlarge-4 large-6 medium-6 small-12" data-equalizer-watch>
 			<% include partials/card %>
 		</div>
-		<%}%>
+		<% } %>
 	</div>
 </section>
 
+<% include partials/login-modal %>
+
+<% var scripts=['/javascripts/client-auth.js'] %>
 <% include partials/footer %>
