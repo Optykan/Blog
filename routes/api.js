@@ -4,13 +4,6 @@ const Response = require('./Response')
 const admin = require("firebase-admin")
 require('dotenv').config()
 
-var serviceAccount = require("./../firebase-creds.json");
-
-admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
-	databaseURL: process.env.FIREBASE_URL
-});
-
 /* GET API. */
 router.get('/', function(req, res, next) {
 	res.setHeader('Content-Type', 'application/json');
@@ -59,14 +52,19 @@ router.post('/posts', function(req, res, next){
 })
 
 router.post('/verify-token', function(req, res, next){
+	const idToken = req.body.idToken
+	const expiresIn = 60 * 60 * 24 * 5 * 1000;
+
 	let response = null;
 	console.log(req.body)
-	admin.auth().verifyIdToken(req.body.idToken)
-	  .then(function(decodedToken) {
-		response = new Response(Response.STATUS_OK, "Verified successfully", decodedToken)
+	admin.auth().createSessionCookie(req.body.idToken, { expiresIn })
+	  .then(function(cookie) {
+	  	const options = { maxAge: expiresIn, httpOnly: true }
+	  	res.cookie('session', cookie, options)
+		response = new Response(Response.STATUS_OK, "Verification success", null) 
 		response.send(res)
 	  }).catch(function(error) {
-		response = new Response(Response.STATUS_OK, "Could not verify", error)
+		response = new Response(Response.STATUS_UNAUTHORIZED, "Could not verify", error)
 		response.send(res)
 	  })
 })

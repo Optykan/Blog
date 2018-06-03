@@ -1,6 +1,8 @@
 "use strict";
 
 (function () {
+	var userToken = null;
+
 	if (typeof firebase === 'undefined') {
 		console.error("Could not find firebase");
 		return;
@@ -10,7 +12,24 @@
 		var email = document.getElementById("login-email").value;
 		var password = document.getElementById("login-password").value;
 		firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-			console.log("auth success");
+			var url = window.location.origin + "/api/verify-token";
+			var body = {
+				idToken: userToken
+			};
+			var opts = {
+				method: "POST",
+				body: JSON.stringify(body),
+				credentials: 'same-origin',
+				cache: "no-cache",
+				headers: {
+					'Credentials': 'same-origin',
+					'Content-Type': 'application/json',
+					'X-Test-Header': "foo"
+				}
+			};
+			fetch(url, opts).then(function (response) {
+				console.log("auth success ", response);
+			});
 		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;
@@ -25,7 +44,8 @@
 	firebase.auth().onAuthStateChanged(function (user) {
 		if (user) {
 			user.getIdToken().then(function (token) {
-				console.log("token ", token);
+				console.log("retrieved token");
+				userToken = token;
 			});
 		} else {
 			console.log("not logged in");

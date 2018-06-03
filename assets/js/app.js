@@ -5,4 +5,3 @@ function parallax($elem){
 	let parallax_scale = 0.5;
 	$elem.css('background-position', 'center '+(-newx*parallax_scale)+'px');
 }
-

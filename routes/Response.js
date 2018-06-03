@@ -3,6 +3,8 @@
 const STATUS_OK = 200;
 const STATUS_NOT_FOUND = 404;
 const STATUS_BAD_REQUEST = 400;
+const STATUS_UNAUTHORIZED = 401;
+const STATUS_FORBIDDEN = 403;
 
 class Response{
 	constructor(status, message, body){
@@ -27,6 +29,12 @@ class Response{
 	}
 	static get STATUS_BAD_REQUEST(){
 		return STATUS_BAD_REQUEST;
+	}
+	static get STATUS_UNAUTHORIZED(){
+		return STATUS_UNAUTHORIZED;
+	}
+	static get STATUS_FORBIDDEN(){
+		return STATUS_FORBIDDEN;
 	}
 
 }

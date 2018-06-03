@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -13,16 +14,25 @@ var User = require('./models/User')
 
 var index = require('./routes/index')
 var blog = require('./routes/blog');
-var users = require('./routes/users');
 var login = require('./routes/login');
 var posts = require('./routes/posts');
 var api = require('./routes/api');
+var admin = require('./routes/admin');
 
 var app = express();
 
 process.on('uncaughtException', function (exception) {
 	console.log(exception);
 });
+
+const firebaseAdmin = require("firebase-admin")
+var serviceAccount = require("./firebase-creds.json");
+
+firebaseAdmin.initializeApp({
+	credential: firebaseAdmin.credential.cert(serviceAccount),
+	databaseURL: process.env.FIREBASE_URL
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -81,10 +91,10 @@ passport.deserializeUser(function(id, done) {
 
 app.use('/', index);
 app.use('/blog', blog);
-app.use('/users', users);
 app.use('/auth', login);
 app.use('/posts', posts);
 app.use('/api', api);
+app.use('/admin', admin);
 
 
 // catch 404 and forward to error handler

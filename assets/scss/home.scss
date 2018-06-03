@@ -45,6 +45,9 @@ $max-width: 960px;
 		}
 		min-height: $header-height;
 
+		// fixes ghost scrolling somehow
+		right: 0;
+
 		@include gradient-dim;
 		background-repeat: no-repeat;
 		background-position: center center;
