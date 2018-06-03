@@ -22,13 +22,13 @@
 				credentials: 'same-origin',
 				cache: "no-cache",
 				headers: {
-					'Credentials': 'same-origin',
 					'Content-Type': 'application/json',
 					'X-Test-Header': "foo"
 				}
 			};
 			fetch(url, opts).then(function (response) {
 				console.log("auth success ", response);
+				window.location.href = window.origin + "/admin";
 			});
 		}).catch(function (error) {
 			// Handle Errors here.

@@ -18,7 +18,12 @@ router.use(function(req, res, next){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('admin/admin', { title: 'Express' });
+	res.render('admin/template', { title: 'Express', page: 'admin' });
+});
+
+router.get('/logout', function(req, res, next) {
+	res.clearCookie("session")
+	res.redirect('../')
 });
 
 module.exports = router;

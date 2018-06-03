@@ -26,6 +26,7 @@
 			}
 			fetch(url, opts).then(response=>{
 				console.log("auth success ", response)
+				window.location.href = window.origin + "/admin"
 			})
 		})
 		.catch(function(error) {

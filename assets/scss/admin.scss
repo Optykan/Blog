@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:700|Open+Sans:300,400,600|Playfair+Display|Rochester');
+@import url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+
+@import '../../node_modules/foundation-sites/scss/foundation';
+@import 'settings';
+@import 'utils'; 
+
+@include foundation-everything;
+
+html,body,#admin{
+	height: 100%;
+	width: 100%;
+}
+#admin{
+	display:flex;
+	.menu li:not(.menu-text){
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		padding-right: 1rem;
+		transition: background 0.5s ease;
+		a{
+			color: $black;
+		}
+		i{
+			margin-right: 1rem;
+		}
+		&:hover{
+			background: $medium-gray;
+		}
+	}
+	#logout{
+		position:absolute;
+		bottom: 0;
+		padding: 1rem;
+		width: 100%;
+		transition: background 0.5s ease;
+		cursor: pointer;
+		a{
+			color: $black;
+		}
+		i{
+			margin-right: 1rem;
+		}
+		&:hover{
+			background: $alert-color;
+			a{
+				color: $white;
+				transition-delay: 0.1s
+			}
+		}	
+	}
+	.admin-left{
+		position: relative;
+		box-shadow: 5px 5px 8px $light-gray;
+		.menu-text{
+			background: $primary-color;
+			color: $white;
+			padding: 1.5rem 3rem;
+			font-size: 1.5rem;
+		}
+	}
+	.admin-right{
+		// background: darken($white, 1%);
+		padding: 1rem;
+		width: 100%;
+	}
+}
+#alert{
+	position:fixed;
+	right: 1rem;
+	top: 1rem;
+	display: none;
+}
+
+.ion-spin-animation { -webkit-animation: spin 1s infinite linear; -moz-animation: spin 1s infinite linear; -o-animation: spin 1s infinite linear; animation: spin 1s infinite linear; }
+
+@-moz-keyframes spin { 0% { -moz-transform: rotate(0deg); }
+    100% { -moz-transform: rotate(359deg); } }
+@-webkit-keyframes spin { 0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(359deg); } }
+@-o-keyframes spin { 0% { -o-transform: rotate(0deg); }
+    100% { -o-transform: rotate(359deg); } }
+@-ms-keyframes spin { 0% { -ms-transform: rotate(0deg); }
+    100% { -ms-transform: rotate(359deg); } }
+@keyframes spin { 0% { transform: rotate(0deg); }
+    100% { transform: rotate(359deg); } }
+.ion-load-a.ion-spin-animation { -webkit-animation-timing-function: steps(8, start); -moz-animation-timing-function: steps(8, start); animation-timing-function: steps(8, start); }
