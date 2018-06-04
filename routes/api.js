@@ -28,7 +28,7 @@ router.get('/posts', function(req, res, next){
 
 router.get('/posts/:id', function(req, res, next){
 	var db = admin.database();
-	var ref = db.ref("/portfolio/"+req.params.id);
+	var ref = db.ref("/posts/"+req.params.id);
 	ref.on("value", snapshot => {
 		let response = null;
 		if(snapshot.exists()){

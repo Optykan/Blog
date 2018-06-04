@@ -25,8 +25,11 @@ html,body,#admin{
 			margin-right: 1rem;
 		}
 		&:hover{
-			background: $medium-gray;
+			background: $light-gray;
 		}
+	}
+	.menu .nav-active{
+		background: $medium-gray;
 	}
 	#logout{
 		position:absolute;
@@ -61,7 +64,7 @@ html,body,#admin{
 	}
 	.admin-right{
 		// background: darken($white, 1%);
-		padding: 1rem;
+		padding: 2rem;
 		width: 100%;
 	}
 }
@@ -72,16 +75,3 @@ html,body,#admin{
 	display: none;
 }
 
-.ion-spin-animation { -webkit-animation: spin 1s infinite linear; -moz-animation: spin 1s infinite linear; -o-animation: spin 1s infinite linear; animation: spin 1s infinite linear; }
-
-@-moz-keyframes spin { 0% { -moz-transform: rotate(0deg); }
-    100% { -moz-transform: rotate(359deg); } }
-@-webkit-keyframes spin { 0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(359deg); } }
-@-o-keyframes spin { 0% { -o-transform: rotate(0deg); }
-    100% { -o-transform: rotate(359deg); } }
-@-ms-keyframes spin { 0% { -ms-transform: rotate(0deg); }
-    100% { -ms-transform: rotate(359deg); } }
-@keyframes spin { 0% { transform: rotate(0deg); }
-    100% { transform: rotate(359deg); } }
-.ion-load-a.ion-spin-animation { -webkit-animation-timing-function: steps(8, start); -moz-animation-timing-function: steps(8, start); animation-timing-function: steps(8, start); }

@@ -19,4 +19,12 @@
 			show_error("Signout failed")
 		})
 	})
+
+	$("#save-post").click(e=>{
+		e.preventDefault()
+	})
+	$("#cancel-post").click(e=>{
+		window.location.href = window.origin + '/admin/posts'
+		e.preventDefault()
+	})
 })()

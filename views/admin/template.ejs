@@ -5,14 +5,16 @@
 		<meta charset="utf-8">
 		<meta name="viewport"  content="width=device-width, initial-scale=1">
 		<link rel='stylesheet' href='/stylesheets/admin.css' />
+		<link rel='stylesheet' href='/stylesheets/simplemde.min.css' />
 	</head>
 	<body>
 		<section id="admin">
 			<div class="admin-left">
 				<ul class="vertical menu icons icon-left">
 					<li class="menu-text">Admin</li>
-					<li><a href="/"><i class="ion ion-document"></i>Posts</a></li>
-					<li><a href="/"><i class="ion ion-cube"></i>Portfolio</a></li>
+					<li<%=page=='admin' ? ' class=nav-active' : ''%>><a href="/admin"><i class="ion ion-home"></i>Home</a></li>
+					<li<%=page=='posts' || page=='edit-posts' ? ' class=nav-active' : ''%>><a href="/admin/posts"><i class="ion ion-document"></i>Posts</a></li>
+					<li<%=page=='portfolio' ? ' class=nav-active' : ''%>><a href="/admin/portfolio"><i class="ion ion-cube"></i>Portfolio</a></li>
 				</ul>
 				<div id="logout">
 					<a href="#"><i class="ion ion-log-out"></i>Logout</a>
