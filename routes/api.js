@@ -41,7 +41,7 @@ router.get('/posts/:id', function(req, res, next){
 });
 
 
-router.post('/posts', function(req, res, next){
+router.post('/posts/:id', function(req, res, next){
 	admin.auth().verifyIdToken(req.body.idToken)
 	  .then(function(decodedToken) {
 	    var uid = decodedToken.uid;

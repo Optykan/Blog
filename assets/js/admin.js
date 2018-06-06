@@ -22,6 +22,23 @@
 
 	$("#save-post").click(e=>{
 		e.preventDefault()
+		let url = window.origin + '/api/posts/'+Date.now();
+		let opts = {
+			method: "POST",
+			body: JSON.stringify({
+				idToken: userToken
+			}),
+			credentials: 'same-origin',
+			cache: "no-cache",
+			headers:{
+				'Content-Type': 'application/json',
+			}
+		}
+		fetch(url, opts).then(response=>{
+			console.log(response)
+		}).catch(e=>{
+			show_error(e);
+		})
 	})
 	$("#cancel-post").click(e=>{
 		window.location.href = window.origin + '/admin/posts'

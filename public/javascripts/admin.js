@@ -24,6 +24,23 @@
 
 	$("#save-post").click(function (e) {
 		e.preventDefault();
+		var url = window.origin + '/api/posts/' + Date.now();
+		var opts = {
+			method: "POST",
+			body: JSON.stringify({
+				idToken: userToken
+			}),
+			credentials: 'same-origin',
+			cache: "no-cache",
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		};
+		fetch(url, opts).then(function (response) {
+			console.log(response);
+		}).catch(function (e) {
+			show_error(e);
+		});
 	});
 	$("#cancel-post").click(function (e) {
 		window.location.href = window.origin + '/admin/posts';

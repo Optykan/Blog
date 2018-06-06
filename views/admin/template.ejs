@@ -34,6 +34,7 @@
 		<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 		<script>
 		  // Initialize Firebase
+		  var userToken = null;
 		  var config = {
 		    apiKey: "AIzaSyBAqYH3BhdY4kaX_SVgg1jGsNUg6BoFxeE",
 		    authDomain: "blog-188504.firebaseapp.com",
@@ -43,6 +44,14 @@
 		    messagingSenderId: "984446413116"
 		  };
 		  firebase.initializeApp(config);
+
+		  firebase.auth().currentUser.getIdToken(true).then(token=>{
+		  	userToken = token;
+		  }).catch(e=>{
+		  	throw new Error("This shouldn't even happen")
+		  })
+
+		  var idToken = 
 		</script>
 		<script src="/javascripts/admin.js"></script>
 	</body>
