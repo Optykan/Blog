@@ -33,7 +33,8 @@ router.get('/posts/edit', function(req, res, next) {
 		post:{
 				title: "",
 				subtitle: "",
-				content: ""
+				content: "",
+				id: ""
 			} 
 		});
 });
@@ -45,6 +46,11 @@ router.get('/posts/edit/:id', function(req, res, next) {
 	fetch(url).then(body=>{
 		return body.json()
 	}).then(json=>{
+		if(json.status === Response.STATUS_NOT_FOUND){
+			let err = new Error(json.message);
+			err.status = 404;
+			next(err)
+		}
 		console.log(json)
 		let data = json.response
 		res.render('admin/template', { 
@@ -53,7 +59,7 @@ router.get('/posts/edit/:id', function(req, res, next) {
 			post:{
 				title: data.title,
 				subtitle: data.subtitle,
-				content: data.content
+				content: data.content,
 			} 
 		});
 	}).catch(err=>{

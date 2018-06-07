@@ -45,13 +45,14 @@
 		  };
 		  firebase.initializeApp(config);
 
-		  firebase.auth().currentUser.getIdToken(true).then(token=>{
-		  	userToken = token;
-		  }).catch(e=>{
-		  	throw new Error("This shouldn't even happen")
+		  firebase.auth().onAuthStateChanged(user=>{
+		  	user.getIdToken(true).then(token=>{
+		  		userToken = token
+		  	}).catch(e=>{
+			  	throw new Error("This shouldn't even happen")
+			  })
 		  })
 
-		  var idToken = 
 		</script>
 		<script src="/javascripts/admin.js"></script>
 	</body>

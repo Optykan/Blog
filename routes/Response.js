@@ -5,6 +5,7 @@ const STATUS_NOT_FOUND = 404;
 const STATUS_BAD_REQUEST = 400;
 const STATUS_UNAUTHORIZED = 401;
 const STATUS_FORBIDDEN = 403;
+const STATUS_INTERNAL_ERROR = 500;
 
 class Response{
 	constructor(status, message, body){
@@ -35,6 +36,9 @@ class Response{
 	}
 	static get STATUS_FORBIDDEN(){
 		return STATUS_FORBIDDEN;
+	}
+	static get STATUS_INTERNAL_ERROR(){
+		return STATUS_INTERNAL_ERROR;
 	}
 
 }
