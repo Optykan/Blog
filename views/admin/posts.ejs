@@ -1,1 +1,10 @@
 <h1>Posts</h1>
+
+<% Object.keys(posts).forEach(key=>{ %>
+	<% let post = posts[key] %>
+	<div>
+	<h1><%=post.title%></h1>
+	<a href="/admin/posts/edit/<%=key%>">Edit</a>
+	</div>
+
+<% }) %>

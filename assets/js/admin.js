@@ -2,13 +2,18 @@ $(function(){
 	$(document).foundation();
 
 	function show_alert(title, message, className){
-		$("#alert-message").text(message)
-		$("#alert").show()
+		document.getElementById("alert-message").innerHTML = message; 
+		document.getElementById("alert-title").innerHTML = title;
 		document.getElementById("alert").className = "callout "+className;
+		$("#alert").show()
 	}
 
 	function show_error(message){
 		show_alert('Error', message, 'alert')
+	}
+
+	function show_success(message){
+		show_alert('Success', message, 'success')
 	}
 
 	$("#logout").click(e=>{
@@ -28,6 +33,7 @@ $(function(){
 		$("#save-post").click(e=>{ 
 			console.log(form)
 			e.preventDefault()
+			e.stopImmediatePropagation()
 			let url = null;
 			if(method === "POST"){
 				url = window.origin + '/api/posts';
@@ -51,15 +57,48 @@ $(function(){
 				}
 			}
 			fetch(url, opts).then(response=>{
+				return response.json()
+			}).then(response=>{
+				show_success(response.message)
 				window.location.href = window.origin + '/admin/posts'
 			}).catch(e=>{
 				console.error(e)
 				show_error(e.toString());
 			})
 		})
-		$("#cancel-post").click(e=>{
-			window.location.href = window.origin + '/admin/posts'
+		$("#delete-post").click(e=>{
 			e.preventDefault()
+			e.stopImmediatePropagation()
+			let url = window.origin + '/api/posts/'+form.id.value;
+			let opts = {
+				method: "DELETE",
+				body: JSON.stringify({
+					idToken: userToken,
+				}),
+				credentials: 'same-origin',
+				cache: "no-cache",
+				headers:{
+					'Content-Type': 'application/json',
+				}
+			}
+			fetch(url, opts).then(response=>{
+				return response.json()
+			}).then(response=>{
+				if(response.status === 200){
+					show_success(response.message)
+					window.location.href = window.location.href = window.origin + '/admin/posts'
+				} else {
+					show_error(response.message)
+				}
+			}).catch(e=>{
+				show_error(e.toString())
+				console.error(e)
+			})
+		})
+		$("#cancel-post").click(e=>{
+			e.preventDefault()
+			e.stopImmediatePropagation()
+			window.location.href = window.origin + '/admin/posts'
 		})
 	}
 	if(typeof simplemde !== "undefined" && typeof document.forms.post_form !=='undefined')

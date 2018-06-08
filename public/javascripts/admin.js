@@ -4,13 +4,18 @@ $(function () {
 	$(document).foundation();
 
 	function show_alert(title, message, className) {
-		$("#alert-message").text(message);
-		$("#alert").show();
+		document.getElementById("alert-message").innerHTML = message;
+		document.getElementById("alert-title").innerHTML = title;
 		document.getElementById("alert").className = "callout " + className;
+		$("#alert").show();
 	}
 
 	function show_error(message) {
 		show_alert('Error', message, 'alert');
+	}
+
+	function show_success(message) {
+		show_alert('Success', message, 'success');
 	}
 
 	$("#logout").click(function (e) {
@@ -30,6 +35,7 @@ $(function () {
 		$("#save-post").click(function (e) {
 			console.log(form);
 			e.preventDefault();
+			e.stopImmediatePropagation();
 			var url = null;
 			if (method === "POST") {
 				url = window.origin + '/api/posts';
@@ -53,15 +59,48 @@ $(function () {
 				}
 			};
 			fetch(url, opts).then(function (response) {
-				console.log("response", response);
+				return response.json();
+			}).then(function (response) {
+				show_success(response.message);
+				window.location.href = window.origin + '/admin/posts';
 			}).catch(function (e) {
 				console.error(e);
 				show_error(e.toString());
 			});
 		});
-		$("#cancel-post").click(function (e) {
-			window.location.href = window.origin + '/admin/posts';
+		$("#delete-post").click(function (e) {
 			e.preventDefault();
+			e.stopImmediatePropagation();
+			var url = window.origin + '/api/posts/' + form.id.value;
+			var opts = {
+				method: "DELETE",
+				body: JSON.stringify({
+					idToken: userToken
+				}),
+				credentials: 'same-origin',
+				cache: "no-cache",
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			};
+			fetch(url, opts).then(function (response) {
+				return response.json();
+			}).then(function (response) {
+				if (response.status === 200) {
+					show_success(response.message);
+					window.location.href = window.location.href = window.origin + '/admin/posts';
+				} else {
+					show_error(response.message);
+				}
+			}).catch(function (e) {
+				show_error(e.toString());
+				console.error(e);
+			});
+		});
+		$("#cancel-post").click(function (e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			window.location.href = window.origin + '/admin/posts';
 		});
 	}
 	if (typeof simplemde !== "undefined" && typeof document.forms.post_form !== 'undefined') initialize_posts(simplemde, document.forms.post_form);

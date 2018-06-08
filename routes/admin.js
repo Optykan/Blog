@@ -23,7 +23,25 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/posts', function(req, res, next) {
-	res.render('admin/template', { title: 'Admin', page: 'posts' });
+	let origin = req.get("host")
+	let url = req.protocol + '://' + origin + '/api/posts'
+
+	fetch(url).then(body=>{
+		return body.json()
+	}).then(json=>{
+		if(json.status === Response.STATUS_NOT_FOUND){
+			let err = new Error(json.message);
+			err.status = 404;
+			next(err)
+		}
+		let data = json.response
+		console.log(data)
+		res.render('admin/template', { 
+			title: 'Admin', 
+			page: 'posts', 
+			posts: data
+		});
+	})
 });
 
 router.get('/posts/edit', function(req, res, next) {
@@ -51,7 +69,6 @@ router.get('/posts/edit/:id', function(req, res, next) {
 			err.status = 404;
 			next(err)
 		}
-		console.log(json)
 		let data = json.response
 		res.render('admin/template', { 
 			title: 'Admin', 
@@ -60,6 +77,7 @@ router.get('/posts/edit/:id', function(req, res, next) {
 				title: data.title,
 				subtitle: data.subtitle,
 				content: data.content,
+				id: req.params.id
 			} 
 		});
 	}).catch(err=>{

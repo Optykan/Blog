@@ -71,7 +71,7 @@ router.post('/posts', function(req, res, next){
 
 router.put('/posts/:id', function(req, res, next){
 	let response = null;
-	admin.auth.verifyIdToken(req.body.idToken).then(decodedToken=>{
+	admin.auth().verifyIdToken(req.body.idToken).then(decodedToken=>{
 		let db = admin.database();
 		let post = db.ref("/posts").child(req.params.id)
 		post.update({
@@ -91,6 +91,26 @@ router.put('/posts/:id', function(req, res, next){
 		response.send(res)
 	});
 })
+
+router.delete('/posts/:id', function(req, res, next){
+	let response = null;
+	admin.auth().verifyIdToken(req.body.idToken).then(decodedToken=>{
+		let db = admin.database();
+		let post = db.ref("/posts").child(req.params.id)
+		post.remove().then(()=>{
+			response = new Response(Response.STATUS_OK, 'Post deleted successfully', null);
+			response.send(res);
+		}).catch(error=>{
+			response = new Response(Response.STATUS_INTERNAL_ERROR, 'Error deleting post', error);
+			response.send(res);
+		})
+
+	}).catch(function(error) {
+		response = new Response(Response.STATUS_UNAUTHORIZED, 'User is unauthenticated. Please reauthenticate and try again.', error.toString());
+		response.send(res)
+	});
+})
+
 
 router.post('/verify-token', function(req, res, next){
 	const idToken = req.body.idToken
