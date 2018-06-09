@@ -1,6 +1,7 @@
 'use strict';
 
 const STATUS_OK = 200;
+const STATUS_NO_CONTENT = 204;
 const STATUS_NOT_FOUND = 404;
 const STATUS_BAD_REQUEST = 400;
 const STATUS_UNAUTHORIZED = 401;
@@ -24,6 +25,9 @@ class Response{
 	}
 	static get STATUS_OK(){
 		return STATUS_OK;
+	}
+	static get STATUS_NO_CONTENT(){
+		return STATUS_NO_CONTENT;
 	}
 	static get STATUS_NOT_FOUND(){
 		return STATUS_NOT_FOUND;

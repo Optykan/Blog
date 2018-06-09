@@ -7,7 +7,10 @@ $(function () {
 		document.getElementById("alert-message").innerHTML = message;
 		document.getElementById("alert-title").innerHTML = title;
 		document.getElementById("alert").className = "callout " + className;
-		$("#alert").show();
+		$("#alert").addClass("alert-showing");
+		setTimeout(function () {
+			$("#alert").removeClass("alert-showing");
+		}, 5000);
 	}
 
 	function show_error(message) {
@@ -50,7 +53,8 @@ $(function () {
 					title: form.title.value,
 					subtitle: "",
 					content: editor.value(),
-					id: form.id.value
+					id: form.id.value,
+					image: form.image.value || 'http://placehold.it/350x350'
 				}),
 				credentials: 'same-origin',
 				cache: "no-cache",
@@ -61,8 +65,12 @@ $(function () {
 			fetch(url, opts).then(function (response) {
 				return response.json();
 			}).then(function (response) {
-				show_success(response.message);
-				window.location.href = window.origin + '/admin/posts';
+				if (response.status === 200) {
+					show_success(response.message);
+					window.location.href = window.origin + '/admin/posts';
+				} else {
+					throw new Error(response.message);
+				}
 			}).catch(function (e) {
 				console.error(e);
 				show_error(e.toString());

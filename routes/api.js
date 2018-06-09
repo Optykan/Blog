@@ -20,7 +20,7 @@ router.get('/posts', function(req, res, next){
 		if(snapshot.exists()){
 			response = new Response(Response.STATUS_OK, 'Retrieved all posts successfully', snapshot.val());
 		} else {
-			response = new Response(Response.STATUS_NOT_FOUND, 'Could not find snapshot', null);
+			response = new Response(Response.STATUS_NO_CONTENT, 'No posts exist', {});
 		}
 		response.send(res);
 	})
@@ -54,6 +54,7 @@ router.post('/posts', function(req, res, next){
 			title: req.body.title,
 			subtitle: req.body.subtitle,
 			content: req.body.content,
+			image: req.body.image,
 			id: id
 		}).then(()=>{
 			response = new Response(Response.STATUS_OK, 'Post created successfully', null);
@@ -63,8 +64,7 @@ router.post('/posts', function(req, res, next){
 			response.send(res);
 		})
 	}).catch(function(error) {
-		console.log(error)
-		response = new Response(Response.STATUS_UNAUTHORIZED, 'User is unauthenticated. Please reauthenticate and try again.', error.toString());
+		response = new Response(Response.STATUS_INTERNAL_ERROR, error.toString(), null);
 		response.send(res)
 	});
 })
@@ -77,6 +77,7 @@ router.put('/posts/:id', function(req, res, next){
 		post.update({
 			title: req.body.title,
 			subtitle: req.body.subtitle,
+			image: req.body.image,
 			content: req.body.content
 		}).then(()=>{
 			response = new Response(Response.STATUS_OK, 'Post saved successfully', null);
@@ -87,7 +88,7 @@ router.put('/posts/:id', function(req, res, next){
 		})
 
 	}).catch(function(error) {
-		response = new Response(Response.STATUS_UNAUTHORIZED, 'User is unauthenticated. Please reauthenticate and try again.', error);
+		response = new Response(Response.STATUS_INTERNAL_ERROR, error, null);
 		response.send(res)
 	});
 })
@@ -117,7 +118,6 @@ router.post('/verify-token', function(req, res, next){
 	const expiresIn = 60 * 60 * 24 * 5 * 1000;
 
 	let response = null;
-	console.log(req.body)
 	admin.auth().createSessionCookie(req.body.idToken, { expiresIn })
 	.then(function(cookie) {
 		const options = { maxAge: expiresIn, httpOnly: true }

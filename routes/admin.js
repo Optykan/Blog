@@ -8,7 +8,6 @@ router.use(function(req, res, next){
 	let cookie = req.cookies.session || ""
 	
 	admin.auth().verifySessionCookie(cookie, true).then(decodedClaims =>{
-		console.log(decodedClaims)
 		next()
 	}).catch(err=>{
 		let error = new Error('Unauthorized')
@@ -27,15 +26,17 @@ router.get('/posts', function(req, res, next) {
 	let url = req.protocol + '://' + origin + '/api/posts'
 
 	fetch(url).then(body=>{
-		return body.json()
-	}).then(json=>{
-		if(json.status === Response.STATUS_NOT_FOUND){
-			let err = new Error(json.message);
-			err.status = 404;
-			next(err)
+		if(body.status === Response.STATUS_NO_CONTENT){
+			return res.render('admin/template', { 
+				title: 'Admin', 
+				page: 'posts', 
+				posts: []
+			});
+		} else {
+			return body.json()
 		}
+	}).then(json=>{
 		let data = json.response
-		console.log(data)
 		res.render('admin/template', { 
 			title: 'Admin', 
 			page: 'posts', 
@@ -77,11 +78,11 @@ router.get('/posts/edit/:id', function(req, res, next) {
 				title: data.title,
 				subtitle: data.subtitle,
 				content: data.content,
-				id: req.params.id
+				id: req.params.id,
+				image: data.image
 			} 
 		});
 	}).catch(err=>{
-		console.log(err)
 		next('error')
 	})
 });
