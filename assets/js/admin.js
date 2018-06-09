@@ -34,6 +34,7 @@ $(function(){
 	function initialize_posts(editor, form){
 		let method = form.id.value === "" ? "POST" : "PUT"; 
 		$("#save-post").click(e=>{ 
+			document.getElementById("save-post").querySelector("i").className = "ion ion-load-c ion-spin-animation";
 			console.log(form)
 			e.preventDefault()
 			e.stopImmediatePropagation()
@@ -75,6 +76,7 @@ $(function(){
 			})
 		})
 		$("#delete-post").click(e=>{
+			document.getElementById("delete-post").querySelector("i").className = "ion ion-load-c ion-spin-animation";
 			e.preventDefault()
 			e.stopImmediatePropagation()
 			let url = window.origin + '/api/posts/'+form.id.value;
@@ -96,11 +98,13 @@ $(function(){
 					show_success(response.message)
 					window.location.href = window.location.href = window.origin + '/admin/posts'
 				} else {
-					show_error(response.message)
+					show_error(response.message) 
+					document.getElementById("delete-post").querySelector("i").className = "ion ion-close";
 				}
 			}).catch(e=>{
 				show_error(e.toString())
 				console.error(e)
+				document.getElementById("delete-post").querySelector("i").className = "ion ion-close";
 			})
 		})
 		$("#cancel-post").click(e=>{
