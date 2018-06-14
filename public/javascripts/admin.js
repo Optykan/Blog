@@ -30,21 +30,21 @@ $(function () {
 		});
 	});
 
-	// -------------------------
-	// --------- POSTS ---------
-	// -------------------------
-	function initialize_posts(editor, form) {
+	// --------------------------
+	// --------- EDITOR ---------
+	// --------------------------
+	function initialize_editor(editor, form, endpoint, redirect, buttons) {
 		var method = form.id.value === "" ? "POST" : "PUT";
-		$("#save-post").click(function (e) {
-			document.getElementById("save-post").querySelector("i").className = "ion ion-load-c ion-spin-animation";
-			console.log(form);
+		buttons.save.$element.click(function (e) {
+			document.getElementById(buttons.save.id).querySelector("i").className = "ion ion-load-c ion-spin-animation";
+			console.log(e);
 			e.preventDefault();
 			e.stopImmediatePropagation();
 			var url = null;
 			if (method === "POST") {
-				url = window.origin + '/api/posts';
+				url = window.origin + '/api/' + endpoint;
 			} else {
-				url = window.origin + '/api/posts/' + form.id.value;
+				url = window.origin + '/api/' + endpoint + '/' + form.id.value;
 			}
 
 			var opts = {
@@ -68,7 +68,7 @@ $(function () {
 			}).then(function (response) {
 				if (response.status === 200) {
 					show_success(response.message);
-					window.location.href = window.origin + '/admin/posts';
+					window.location.href = window.origin + redirect;
 				} else {
 					throw new Error(response.message);
 				}
@@ -77,11 +77,11 @@ $(function () {
 				show_error(e.toString());
 			});
 		});
-		$("#delete-post").click(function (e) {
-			document.getElementById("delete-post").querySelector("i").className = "ion ion-load-c ion-spin-animation";
+		buttons.delete.$element.click(function (e) {
+			document.getElementById(buttons.delete.id).querySelector("i").className = "ion ion-load-c ion-spin-animation";
 			e.preventDefault();
 			e.stopImmediatePropagation();
-			var url = window.origin + '/api/posts/' + form.id.value;
+			var url = window.origin + '/api/' + endpoint + '/' + form.id.value;
 			var opts = {
 				method: "DELETE",
 				body: JSON.stringify({
@@ -98,22 +98,56 @@ $(function () {
 			}).then(function (response) {
 				if (response.status === 200) {
 					show_success(response.message);
-					window.location.href = window.location.href = window.origin + '/admin/posts';
+					window.location.href = window.location.href = window.origin + redirect;
 				} else {
 					show_error(response.message);
-					document.getElementById("delete-post").querySelector("i").className = "ion ion-close";
+					document.getElementById(buttons.delete.id).querySelector("i").className = "ion ion-close";
 				}
 			}).catch(function (e) {
 				show_error(e.toString());
 				console.error(e);
-				document.getElementById("delete-post").querySelector("i").className = "ion ion-close";
+				document.getElementById(buttons.delete.id).querySelector("i").className = "ion ion-close";
 			});
 		});
-		$("#cancel-post").click(function (e) {
+		buttons.cancel.$element.click(function (e) {
 			e.preventDefault();
 			e.stopImmediatePropagation();
-			window.location.href = window.origin + '/admin/posts';
+			window.location.href = window.origin + redirect;
 		});
 	}
-	if (typeof simplemde !== "undefined" && typeof document.forms.post_form !== 'undefined') initialize_posts(simplemde, document.forms.post_form);
+	if (typeof simplemde !== "undefined" && typeof document.forms.post_form !== 'undefined') {
+		var buttons = {
+			save: {
+				id: 'save-post',
+				$element: $("#save-post")
+			},
+			delete: {
+				id: 'delete-post',
+				$element: $("#delete-post")
+			},
+			cancel: {
+				id: 'cancel-post',
+				$element: $("#cancel-post")
+			}
+		};
+		initialize_editor(simplemde, document.forms.post_form, 'posts', '/admin/posts', buttons);
+	}
+
+	if (typeof simplemde !== "undefined" && typeof document.forms.project_form !== "undefined") {
+		var _buttons = {
+			save: {
+				id: 'save-project',
+				$element: $('#save-project')
+			},
+			delete: {
+				id: 'delete-project',
+				$element: $('#delete-project')
+			},
+			cancel: {
+				id: 'cancel-project',
+				$element: $('#cancel-project')
+			}
+		};
+		initialize_editor(simplemde, document.forms.project_form, 'projects', '/admin/projects', _buttons);
+	}
 });

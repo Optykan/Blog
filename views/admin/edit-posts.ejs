@@ -3,12 +3,13 @@
 	<label for="title">Title</label>
 	<input type="text" name="title" placeholder="Post Title" value="<%=post.title%>" required>
 	<textarea id="simpleMDE"></textarea>
+	<label for="snippet">Snippet</label>
 	<textarea name="snippet"></textarea>
 	<label for="image">Image</label>
 	<input name="image" type="text" value="<%=post.image%>">
-	<button class="button primary" id="save-post"><i class="ion ion-checkmark"></i> Save</button>
-	<button class="button alert" id="delete-post"><i class="ion ion-close"></i> Delete</button>
-	<button class="button secondary" id="cancel-post">Cancel</button> 
+	<button type="button" class="button primary" id="save-post"><i class="ion ion-checkmark"></i> Save</button>
+	<button type="button" class="button alert" id="delete-post"><i class="ion ion-close"></i> Delete</button>
+	<button type="button" class="button secondary" id="cancel-post">Cancel</button> 
 </form>
 
 <script src="/javascripts/vendor/simplemde.min.js"></script>
@@ -17,12 +18,13 @@ var simplemde = new SimpleMDE({ element: document.getElementById("simpleMDE") })
 
 // hello, XSS
 <% let content = post.content
+        .replace("/", "\\")
 		.replace(/`/g, '\\`')
 		.replace(/\n/g, '\\n')
-		.replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;"); %>
+		.replace("&amp;", /&/g)
+        .replace("&lt;", /</g)
+        .replace("&gt;", />/g)
+        .replace("&quot;", /"/)
+        .replace("&#039;", /'/g); %> 
 simplemde.value(`<%-content%>`)
 </script>

@@ -4,6 +4,15 @@ const Response = require('./Response')
 const admin = require("firebase-admin")
 require('dotenv').config()
 
+function escapeUnsafe(unsafe){
+	return unsafe
+		.replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 /* GET API. */
 router.get('/', function(req, res, next) {
 	res.setHeader('Content-Type', 'application/json');
@@ -51,9 +60,9 @@ router.post('/posts', function(req, res, next){
 		let ref = db.ref("/posts");
 		let post = ref.child(id)
 		post.set({
-			title: req.body.title,
-			subtitle: req.body.subtitle,
-			content: req.body.content,
+			title: escapeUnsafe(req.body.title),
+			subtitle: escapeUnsafe(req.body.subtitle),
+			content: escapeUnsafe(req.body.content),
 			image: req.body.image,
 			id: id
 		}).then(()=>{
@@ -75,10 +84,10 @@ router.put('/posts/:id', function(req, res, next){
 		let db = admin.database();
 		let post = db.ref("/posts").child(req.params.id)
 		post.update({
-			title: req.body.title,
-			subtitle: req.body.subtitle,
+			title: escapeUnsafe(req.body.title),
+			subtitle: escapeUnsafe(req.body.subtitle),
+			content: escapeUnsafe(req.body.content)
 			image: req.body.image,
-			content: req.body.content
 		}).then(()=>{
 			response = new Response(Response.STATUS_OK, 'Post saved successfully', null);
 			response.send(res);
