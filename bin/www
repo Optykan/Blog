@@ -41,6 +41,7 @@ try{
   https.createServer(ssl, app).listen(sslPort);
 } catch(e){
   // not prod...
+  console.log(e)
 }
 
 
