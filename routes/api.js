@@ -86,7 +86,7 @@ router.put('/posts/:id', function(req, res, next){
 		post.update({
 			title: escapeUnsafe(req.body.title),
 			subtitle: escapeUnsafe(req.body.subtitle),
-			content: escapeUnsafe(req.body.content)
+			content: escapeUnsafe(req.body.content),
 			image: req.body.image,
 		}).then(()=>{
 			response = new Response(Response.STATUS_OK, 'Post saved successfully', null);
