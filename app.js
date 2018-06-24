@@ -5,10 +5,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
-var session = require('express-session')
-var MongoStore = require('connect-mongo')(session)
+var session = require('express-session');
+var fs = require('fs');
 
 var User = require('./models/User')
 
@@ -33,7 +31,6 @@ firebaseAdmin.initializeApp({
 	databaseURL: process.env.FIREBASE_URL
 });
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -51,43 +48,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-var mongoOptions={
-	url: process.env.MONGO_DB_URL
-}
-app.use(session({
-	store: new MongoStore(mongoOptions),
-	secret: process.env.SESSION_SECRET,
-	resave: false,
-	saveUninitialized: false
-}))
-app.use(passport.initialize());
-
-// auth stuff
-passport.use(new GoogleStrategy({
-	clientID: process.env.GOOGLE_CLIENT_ID,
-	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-	callbackURL: process.env.PASSPORT_GOOGLE_CALLBACK
-},
-function(token, tokenSecret, profile, done) {
-	User.create({ googleId: profile.id }, function (err, user) {
-		return done(err, user);
-	});
-	User.findOrCreate(profile).then(user=>{
-		return done(null, user)
-	});
-}))
-
-passport.serializeUser(function(user, done) {
-	console.log(user)
-	done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-	User.findById(id, function(err, user) {
-		done(err, user);
-	});
-});
 
 app.use('/', index);
 app.use('/blog', blog);
@@ -115,30 +75,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var mongoOptions={
-	url: process.env.MONGO_DB_URL
-}
-app.use(session({
-	store: new MongoStore(mongoOptions),
-	secret: process.env.SESSION_SECRET,
-	resave: false,
-	saveUninitialized: false
-}))
-
-
-// auth stuff
-passport.use(new GoogleStrategy({
-	clientID: process.env.GOOGLE_CLIENT_ID,
-	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-	callbackURL: process.env.PASSPORT_GOOGLE_CALLBACK
-},
-function(token, tokenSecret, profile, done) {
-	User.create({ googleId: profile.id }, function (err, user) {
-		return done(err, user);
-	});
-	User.findOrCreate(profile).then(user=>{
-		return done(null, profile)
-	});
-}))
 
 module.exports = app;
