@@ -5,15 +5,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+
 var fs = require('fs');
-
-var User = require('./models/User')
-
 var index = require('./routes/index')
 var blog = require('./routes/blog');
-var login = require('./routes/login');
-var posts = require('./routes/posts');
 var api = require('./routes/api');
 var admin = require('./routes/admin');
 
@@ -51,8 +46,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/blog', blog);
-app.use('/auth', login);
-app.use('/posts', posts);
 app.use('/api', api);
 app.use('/admin', admin);
 
