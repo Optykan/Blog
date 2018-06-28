@@ -45,7 +45,7 @@ gulp.task('sass', function() {
 	.pipe(notify("Compiled successfully"));
 });
 
-gulp.task('compressCss', function(){
+gulp.task('compressCss', ['sass'], function(){
 	return gulp.src(["public/stylesheets/*.css", '!public/stylesheets/admin.css', '!public/stylesheets/bundle.css'])
 		.pipe(concatCss("public/stylesheets/bundle.css"))
 		.pipe(uglifycss({

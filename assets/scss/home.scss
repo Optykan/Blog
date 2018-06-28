@@ -7,7 +7,19 @@ $hero-height: 80%;
 $header-height: 600px;
 $max-width: 960px;
 
+.webp {
+	#home .hero-header{
+		background-image: url('/images/webp/low-poly-texture-22.webp')
+	}
+}
+.no-webp{
+	#home .hero-header{
+		background-image: url('/images/compress/low-poly-texture-22.png')
+	}
+}
+
 #home{
+
 	font-family: 'Open Sans', sans-serif;
 	p{
 		max-width: $max-width;
