@@ -7,6 +7,8 @@ var notify      = require('gulp-notify');
 var babel       = require('gulp-babel');
 var babelcore   = require('babel-core');
 var autoprefixer= require('gulp-autoprefixer');
+var concatCss   = require('gulp-concat-css');
+var uglifycss  = require('gulp-uglifycss');
 
 // Static Server + watching scss/html files
 
@@ -39,6 +41,15 @@ gulp.task('sass', function() {
 	.pipe(browserSync.stream())
 	.pipe(notify("Compiled successfully"));
 });
+
+gulp.task('compressCss', function(){
+	return gulp.src(["public/stylesheets/*.css", '!public/stylesheets/admin.css', '!public/stylesheets/bundle.css'])
+		.pipe(concatCss("public/stylesheets/bundle.css"))
+		.pipe(uglifycss({
+			"maxLineLen": 80
+		}))
+		.pipe(gulp.dest("./"));
+})
 
 gulp.task('js', function(){
 	gulp.src("assets/js/**/*.js")
