@@ -24,6 +24,8 @@ router.get('/', function(req, res, next) {
 router.get('/posts', function(req, res, next) {
 	let origin = req.get("host")
 	let url = req.protocol + '://' + origin + '/api/posts'
+	console.log("fetch from: " + url)
+	console.log(req)
 
 	fetch(url).then(body=>{
 		if(body.status === Response.STATUS_NO_CONTENT){
