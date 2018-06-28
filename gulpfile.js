@@ -8,7 +8,10 @@ var babel       = require('gulp-babel');
 var babelcore   = require('babel-core');
 var autoprefixer= require('gulp-autoprefixer');
 var concatCss   = require('gulp-concat-css');
-var uglifycss  = require('gulp-uglifycss');
+var uglifycss   = require('gulp-uglifycss');
+var concat      = require('gulp-concat');
+var pump        = require('pump');
+var uglify      = require('gulp-uglify');
 
 // Static Server + watching scss/html files
 
@@ -59,6 +62,17 @@ gulp.task('js', function(){
 	.pipe(gulp.dest("public/javascripts"));
 
 	return browserSync.reload();
+})
+
+gulp.task('compressHomeJs', function(cb){
+	pump([
+        gulp.src(['public/javascripts/vendor/jquery.js', 'public/javascripts/vendor/foundation.min.js', 'public/javascripts/app.js', 'public/javascripts/home.js', 'public/javascripts/client-auth.js']),
+        concat('bundle-home.js'),
+        uglify(),
+        gulp.dest('public/javascripts/')
+    ],
+    cb
+  );
 })
 
 gulp.task('default', ['server']);
