@@ -10,7 +10,7 @@
 %>
 
 <div class="card">
-	<img src="<%=data.image%>">
+	<img class="lazy" data-src="<%=data.image%>" alt="<%=data.title%>">
 	<div class="card-section">
 		<h4 class="card-title"><%=data.title%></h4>
 		<% if(typeof data.subtitle != 'undefined'){ %>
