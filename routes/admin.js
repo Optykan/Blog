@@ -47,7 +47,7 @@ router.get('/posts', function(req, res, next) {
 
 router.get('/posts/edit', function(req, res, next) {
 	res.render('admin/template', { 
-		title: 'Admin', 
+		title: 'Admin Dashboard', 
 		page: 'edit-posts',
 		post:{
 				title: "",

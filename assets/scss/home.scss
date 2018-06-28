@@ -68,7 +68,7 @@ $max-width: 960px;
 		}
 	}
 	.home-section{
-		clip-path: polygon(0 4rem, 100% 0, 100% 100%, 0 100%);
+		// clip-path: polygon(0 4rem, 100% 0, 100% 100%, 0 100%);
 		// -webkit-backface-visibility: hidden;
 		padding: 0rem 0.001rem;
 		position: relative;
@@ -77,10 +77,10 @@ $max-width: 960px;
 		box-sizing: content-box;
 		@include flex-center;
 		flex-direction: column;
-		background: $white;
+		background: transparent;
 
 		@include breakpoint(small down){
-			top: calc(#{$hero-height} - #{$clip-height});
+			top: calc(25% - #{$clip-height});
 		}
 	}
 	.down-arrows{
