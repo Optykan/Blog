@@ -94,6 +94,7 @@ $(function () {
 				}
 			};
 			fetch(url, opts).then(function (response) {
+				console.log(response);
 				return response.json();
 			}).then(function (response) {
 				if (response.status === 200) {

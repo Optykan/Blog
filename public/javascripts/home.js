@@ -18,7 +18,7 @@ $('#home').scroll(function (e) {
 	if (!hasScrolled) {
 		hasScrolled = true;
 		setTimeout(function () {
-			blogButtonCheck();
+			// blogButtonCheck()
 			hasScrolled = false;
 		}, 250);
 	}
