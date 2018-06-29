@@ -1,11 +1,35 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:700|Open+Sans:300,400,600|Playfair+Display|Rochester');
-@import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 
 @import '../../node_modules/foundation-sites/scss/foundation';
 @import 'settings';
 @import 'utils'; 
 @import 'components/cards';
-@include foundation-everything;
+
+// Global styles
+@include foundation-global-styles;
+@include foundation-typography;
+
+// Grids (choose one)
+@include foundation-xy-grid-classes;
+
+// Generic components
+@include foundation-button;
+@include foundation-button-group;
+@include foundation-close-button;
+
+// Basic components
+@include foundation-card;
+@include foundation-tooltip;
+
+// Menu-based containers
+@include foundation-menu;
+
+// Layout components
+@include foundation-reveal;
+@include foundation-top-bar;
+
+// @include foundation-flex-classes;
+@include foundation-visibility-classes;
+// @include foundation-prototype-classes;
 
 .noborder{
 	border: none;
