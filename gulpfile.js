@@ -55,11 +55,17 @@ gulp.task('compressCss', ['sass'], function(){
 })
 
 gulp.task('js', function(){
-	gulp.src("assets/js/**/*.js")
+	gulp.src(["assets/js/**/*.js", "!assets/js/sw.js"])
 	.pipe(babel({
 		presets: ['env']
 	}).on('error', console.log))
 	.pipe(gulp.dest("public/javascripts"));
+
+	gulp.src("assets/js/sw.js")
+	.pipe(babel({
+		presets: ['env']
+	}).on('error', console.log))
+	.pipe(gulp.dest("public/"));
 
 	return browserSync.reload();
 })
