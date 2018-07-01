@@ -46,8 +46,15 @@ gulp.task('sass', function() {
 });
 
 gulp.task('compressCss', ['sass'], function(){
-	return gulp.src(["public/stylesheets/*.css", '!public/stylesheets/admin.css', '!public/stylesheets/bundle.css'])
-		.pipe(concatCss("public/stylesheets/bundle.css"))
+	gulp.src(['public/stylesheets/animate.css', 'public/stylesheets/foundation.css', 'public/stylesheets/home.css', 'public/stylesheets/style.css', 'public/stylesheets/parallax.css'])
+		.pipe(concatCss("public/stylesheets/bundle/bundle-home.css"))
+		.pipe(uglifycss({
+			"maxLineLen": 80
+		}))
+		.pipe(gulp.dest("./"));
+
+	return gulp.src(['public/stylesheets/foundation.css', 'public/stylesheets/style.css', 'public/stylesheets/parallax.css', 'public/stylesheets/error.css'])
+		.pipe(concatCss("public/stylesheets/bundle/bundle-error.css"))
 		.pipe(uglifycss({
 			"maxLineLen": 80
 		}))

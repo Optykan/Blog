@@ -9,9 +9,9 @@ self.addEventListener('install', function (e) {
 });
 
 self.addEventListener('fetch', function (event) {
-	evt.respondWith(fromNetwork(evt.request, 400).catch(function () {
-	    return fromCache(evt.request);
-	}));
+  evt.respondWith(fromNetwork(event.request, 400).catch(function () {
+    return fromCache(event.request);
+  }));
 });
 
 function fromCache(request) {
@@ -25,10 +25,10 @@ function fromCache(request) {
 function fromNetwork(request, timeout) {
   return new Promise(function (fulfill, reject) {
     var timeoutId = setTimeout(reject, timeout);
- 
+
     fetch(request).then(function (response) {
       clearTimeout(timeoutId);
-      fulfill(response); 
+      fulfill(response);
     }, reject);
   });
 }
