@@ -3,3 +3,4 @@ server.log
 .env
 firebase-creds.json
 npm-debug.log.*
+.snyk
