@@ -79,7 +79,7 @@ gulp.task('js', function(){
 
 gulp.task('compressHomeJs', ['js'], function(cb){
 	pump([
-        gulp.src(['public/javascripts/vendor/jquery.js', 'public/javascripts/vendor/wow.min.js', 'public/javascripts/vendor/lazyload.js', 'public/javascripts/vendor/foundation.min.js', 'public/javascripts/app.js', 'public/javascripts/home.js', 'public/javascripts/client-auth.js']),
+        gulp.src(['public/javascripts/vendor/jquery.js', 'public/javascripts/vendor/wow.min.js', 'public/javascripts/vendor/lazyload.js', 'public/javascripts/app.js', 'public/javascripts/home.js', 'public/javascripts/client-auth.js']),
         concat('bundle-home.js'),
         uglify(),
         gulp.dest('public/javascripts/')
