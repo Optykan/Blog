@@ -11,7 +11,7 @@ function parallax($elem){
 }
 
 var lazyLoad = new LazyLoad({
-	elements_selector: ".lazy"
+	elements_selector: ".lazy" 
 })
 
 if ('serviceWorker' in navigator) {
