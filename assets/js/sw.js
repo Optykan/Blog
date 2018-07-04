@@ -4,7 +4,17 @@ importScripts('/javascripts/vendor/cache-polyfill.js');
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open('syang').then(function (cache) {
-    return cache.addAll(['/', '/javascripts/bundle-home.js', '/stylesheets/bundle.css', '/images/compress/low-poly-texture-22.png', '/images/webp/low-poly-texture-22.webp', '/images/portfolio/avante-1.jpg', '/images/portfolio/usc-1.jpg']);
+    return cache.addAll([
+      '/', 
+      '/javascripts/bundle-home.js', 
+      '/images/compress/low-poly-texture-22.png', 
+      '/images/webp/low-poly-texture-22.webp', 
+      '/images/portfolio/avante-1.jpg', 
+      '/images/portfolio/usc-1.jpg',
+      '/images/portfolio/beat-1.jpg',
+      '/images/portfolio/blog-1.jpg'
+      '/images/portfolio/teachassist-1.jpg'
+      ]);
   }));
 });
 
