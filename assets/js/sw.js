@@ -6,6 +6,7 @@ self.addEventListener('install', function (e) {
   e.waitUntil(caches.open('syang').then(function (cache) {
     return cache.addAll([
       '/', 
+      '/stylesheets/bundle/bundle-home.css',
       '/javascripts/bundle-home.js', 
       '/images/compress/low-poly-texture-22.png', 
       '/images/webp/low-poly-texture-22.webp', 
