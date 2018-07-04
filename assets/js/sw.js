@@ -13,7 +13,7 @@ self.addEventListener('install', function (e) {
       '/images/portfolio/avante-1.jpg', 
       '/images/portfolio/usc-1.jpg',
       '/images/portfolio/beat-1.jpg',
-      '/images/portfolio/blog-1.jpg'
+      '/images/portfolio/blog-1.jpg',
       '/images/portfolio/teachassist-1.jpg'
       ]);
   }));
