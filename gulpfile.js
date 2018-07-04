@@ -26,8 +26,8 @@ gulp.task('server', ['sass'], function() {
 		notify: true
 	});
 
-	gulp.watch("assets/scss/**/*.scss", ['sass']);
-	gulp.watch("assets/js/**/*.js", ['js']);
+	gulp.watch("assets/scss/**/*.scss", ['compressCss']);
+	gulp.watch("assets/js/**/*.js", ['compressHomeJs']);
 	gulp.watch(["routes/*.html", "views/**/*.ejs"]).on('change', browserSync.reload);
 });
 

@@ -21,6 +21,7 @@ $subtitle-size: 14px;
 		font-size: $title-size;
 		transition: font-size $card-grow-time linear;
 		transition-delay: 0.1s;
+		white-space: pre;
 	}
 	.card-subtitle{
 		font-size: $subtitle-size;
