@@ -13,6 +13,17 @@
 	<link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' type="text/css"/>
 	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' type="text/css"/>
 
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121827249-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-121827249-1');
+	</script>
+
+
 	<!-- dont forget to include a stylesheets variable -->
 	<% if (typeof stylesheets !== 'undefined') { %>
 		<% for(var i=0; i<stylesheets.length; i++) { %>
