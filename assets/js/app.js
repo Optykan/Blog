@@ -26,7 +26,7 @@ $('#home').scroll(e=>{
 	if(!hasScrolled){
 		hasScrolled=true
 		setTimeout(()=>{
-			// blogButtonCheck()
+			blogButtonCheck()
 			hasScrolled=false
 		}, 250)
 	}

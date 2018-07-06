@@ -15,7 +15,7 @@ var uglify      = require('gulp-uglify');
 
 // Static Server + watching scss/html files
 
-gulp.task('server', ['sass'], function() {
+gulp.task('server', ['compressCss', 'compressJs'], function() {
 	var server = child.spawn('node', ['bin/www']);
 	var log = fs.createWriteStream('server.log', {flags: 'a'});
 	server.stderr.pipe(log);
@@ -28,7 +28,7 @@ gulp.task('server', ['sass'], function() {
 	});
 
 	gulp.watch("assets/scss/**/*.scss", ['compressCss']);
-	gulp.watch("assets/js/**/*.js", ['compressHomeJs']);
+	gulp.watch("assets/js/**/*.js", ['compressJs']);
 	gulp.watch(["routes/*.html", "views/**/*.ejs"]).on('change', browserSync.reload);
 });
 
@@ -86,15 +86,15 @@ gulp.task('js', function(){
 	return browserSync.reload();
 })
 
-gulp.task('compressHomeJs', ['js'], function(cb){
-	pump([
-        gulp.src(['public/javascripts/vendor/jquery.js', 'public/javascripts/vendor/wow.min.js', 'public/javascripts/vendor/foundation.min.js', 'public/javascripts/vendor/lazyload.js', 'public/javascripts/app.js', 'public/javascripts/home.js', 'public/javascripts/client-auth.js']),
-        concat('bundle-home.js'),
-        uglify(),
-        gulp.dest('public/javascripts/')
-    ],
-    cb
-  );
+gulp.task('compressJs', ['js'], function(){
+    gulp.src(['public/javascripts/vendor/jquery.js', 'public/javascripts/vendor/wow.min.js', 'public/javascripts/vendor/foundation.min.js', 'public/javascripts/vendor/lazyload.js', 'public/javascripts/app.js', 'public/javascripts/home.js', 'public/javascripts/client-auth.js'])
+        .pipe(concat('bundle-home.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('public/javascripts/'))
+    return gulp.src(['public/javascripts/vendor/jquery.js', 'public/javascripts/vendor/foundation.min.js', 'public/javascripts/vendor/lazyload.js', 'public/javascripts/app.js', , 'public/javascripts/blog.js', 'public/javascripts/client-auth.js'])
+        .pipe(concat('bundle-blog.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('public/javascripts/'));
 })
 
 gulp.task('default', ['server']);
