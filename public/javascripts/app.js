@@ -79,13 +79,35 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	}e.Modernizr = Modernizr;
 }(window, document);
 
+console.log('load');
+
 $(document).foundation();
 
-function parallax($elem) {
-	var newx = $(window).scrollTop();
-	var parallax_scale = 0.5;
-	$elem.css('background-position', 'center ' + -newx * parallax_scale + 'px');
+// --------------------------
+// ------ BUTTON CHECK ------
+// --------------------------
+var hasScrolled = false;
+
+var $parallax = $('.parallax-static');
+var button = $('#blog-link');
+
+function blogButtonCheck() {
+	if ($parallax.offset().top < 100) {
+		button.addClass('black').removeClass('white');
+	} else {
+		button.removeClass('black').addClass('white');
+	}
 }
+
+$('#home').scroll(function (e) {
+	if (!hasScrolled) {
+		hasScrolled = true;
+		setTimeout(function () {
+			// blogButtonCheck()
+			hasScrolled = false;
+		}, 250);
+	}
+});
 
 var lazyLoad = new LazyLoad({
 	elements_selector: ".lazy"

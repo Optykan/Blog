@@ -23,7 +23,8 @@ gulp.task('server', ['sass'], function() {
 	browserSync.init({
 		proxy: "localhost:3000",
 		port: 3001,
-		notify: true
+		notify: true,
+		open: false
 	});
 
 	gulp.watch("assets/scss/**/*.scss", ['compressCss']);
@@ -53,12 +54,20 @@ gulp.task('compressCss', ['sass'], function(){
 		}))
 		.pipe(gulp.dest("./"));
 
+	gulp.src(['public/stylesheets/foundation.css', 'public/stylesheets/blog.css', 'public/stylesheets/style.css', 'public/stylesheets/parallax.css'])
+		.pipe(concatCss("public/stylesheets/bundle/bundle-blog.css"))
+		.pipe(uglifycss({
+			"maxLineLen": 80
+		}))
+		.pipe(gulp.dest("./"));
+
 	return gulp.src(['public/stylesheets/foundation.css', 'public/stylesheets/style.css', 'public/stylesheets/parallax.css', 'public/stylesheets/error.css'])
 		.pipe(concatCss("public/stylesheets/bundle/bundle-error.css"))
 		.pipe(uglifycss({
 			"maxLineLen": 80
 		}))
-		.pipe(gulp.dest("./"));
+		.pipe(gulp.dest("./"))
+		.pipe(browserSync.stream());
 })
 
 gulp.task('js', function(){
