@@ -1,5 +1,6 @@
 <% var stylesheets = ['/stylesheets/bundle/bundle-error.css'] %>
 <% include partials/header %>
+<% include partials/navbar %>
 <div class="grid-x parallax" id="error">
 	<div class="parallax-group header-section">
 		<div class="parallax-layer parallax-back hero-header"></div>
@@ -13,9 +14,7 @@
 		<div class="section about">
 			<h5 class="section-header">Stacktrace</h5>
 			<p class="os text-center">
-				<pre>
-					<%=error.stack%>
-				</pre>
+				<pre><%=stacktrace%></pre>
 			</p>
 		</div>
 	</section>

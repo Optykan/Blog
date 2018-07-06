@@ -89,7 +89,7 @@ $(document).foundation();
 var hasScrolled = false;
 
 var $parallax = $('.parallax-static');
-var button = $('#blog-link');
+var button = $('#navbar-menu').find('.button').first();
 
 function blogButtonCheck() {
 	if ($parallax.offset().top < 100) {

@@ -12,7 +12,7 @@ $(document).foundation();
 let hasScrolled = false;
 
 let $parallax = $('.parallax-static')
-let button = $('#blog-link')
+let button = $('#navbar-menu').find('.button').first()
 
 function blogButtonCheck(){
 	if($parallax.offset().top<100){

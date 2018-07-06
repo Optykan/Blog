@@ -1,7 +1,11 @@
 <div class="top-bar stick">
 	<div class="top-bar-right">
-		<ul class="menu">
-			<li><a href="/blog" id="blog-link" class="button white round">Blog</a></li>
+		<ul class="menu" id="navbar-menu">
+			<% if(typeof page === 'undefined' || page === 'blog') { %>
+				<li><a href="/" id="home-link" class="button white round">Home</a></li>
+			<% } else { %>
+				<li><a href="/blog" id="blog-link" class="button white round">Blog</a></li>
+			<% } %>
 		</ul>
 	</div>
 </div>

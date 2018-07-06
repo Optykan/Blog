@@ -5,6 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 	res.render('index', { 
 		title: 'Samuel Yang',
+		page: 'index',
 		projects: [{
 			title: 'Avante Landscaping',
 			subtitle: 'WordPress•Foundation6',
