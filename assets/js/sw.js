@@ -1,11 +1,13 @@
 'use strict';
+const CACHE = 'syang';
 
 importScripts('/javascripts/vendor/cache-polyfill.js');
 
 self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open('syang').then(function (cache) {
+  e.waitUntil(caches.open(CACHE).then(function (cache) {
     return cache.addAll([
       '/', 
+      '/favicon.ico',
       '/stylesheets/bundle/bundle-home.css',
       '/javascripts/bundle-home.js', 
       '/images/compress/low-poly-texture-22.png', 
@@ -20,7 +22,7 @@ self.addEventListener('install', function (e) {
 });
 
 self.addEventListener('fetch', function (event) {
-  evt.respondWith(fromNetwork(event.request, 400).catch(function () {
+  event.respondWith(fromNetwork(event.request, 400).catch(function () {
       return fromCache(event.request);
   }));
 });
