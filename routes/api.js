@@ -20,12 +20,12 @@ function makeId(title){
 	const maxlength = 50;
 	let id = "";
 
-	let timestamp = Date.now().toString();
+	let timestamp = (Math.floor(Date.now()/(1000 * 60))).toString()
 	let tokens = title.split(" ");
 	for(let i = 0; i < tokens.length && id.length < maxlength; i++){
 		id += tokens[i] + "-";
 	}
-	return id.toLowerCase() + "-" + timestamp;
+	return id.toLowerCase() + timestamp;
 }
 
 /* GET API. */
@@ -81,7 +81,7 @@ router.post('/posts', function(req, res, next){
 			content: escapeUnsafe(req.body.content),
 			image: req.body.image,
 			snippet: escapeUnsafe(req.body.snippet),
-			date: Date.now().toString(),
+			date: (Math.floor(Date.now()/(1000 * 60))).toString(),
 			id: id
 		}).then(()=>{
 			response = new Response(Response.STATUS_OK, 'Post created successfully', null);

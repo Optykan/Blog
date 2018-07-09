@@ -43,7 +43,7 @@ router.get('/posts', function(req, res, next) {
 			return data[key]
 		})
 		posts.sort((a, b)=>{
-			return Math.sign(a.date - b.date);
+			return Math.sign(parseInt(a.date) - parseInt(b.date));
 		});
 
 		res.render('admin/template', { 
