@@ -39,10 +39,17 @@ router.get('/posts', function(req, res, next) {
 		}
 	}).then(json=>{
 		let data = json.response
+		let posts = Object.keys(data).map(key=>{
+			return data[key]
+		})
+		posts.sort((a, b)=>{
+			return Math.sign(a.date - b.date);
+		});
+
 		res.render('admin/template', { 
 			title: 'Admin', 
 			page: 'posts', 
-			posts: data
+			posts: posts
 		});
 	})
 });

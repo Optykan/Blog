@@ -53,6 +53,7 @@ $(function(){
 					subtitle: "",
 					content: editor.value(),
 					id: form.id.value,
+					snippet: form.snippet.value,
 					image: form.image.value || 'http://placehold.it/350x350'
 				}),
 				credentials: 'same-origin',

@@ -5,12 +5,27 @@ const admin = require("firebase-admin")
 require('dotenv').config()
 
 function escapeUnsafe(unsafe){
+	if(!unsafe) return "";
 	return unsafe
 		.replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+function makeId(title){
+	title = title.trim();
+
+	const maxlength = 50;
+	let id = "";
+
+	let timestamp = Date.now().toString();
+	let tokens = title.split(" ");
+	for(let i = 0; i < tokens.length && id.length < maxlength; i++){
+		id += tokens[i] + "-";
+	}
+	return id.toLowerCase() + "-" + timestamp;
 }
 
 /* GET API. */
@@ -55,15 +70,18 @@ router.get('/posts/:id', function(req, res, next){
 router.post('/posts', function(req, res, next){
 	let response = null;
 	admin.auth().verifyIdToken(req.body.idToken).then(decodedToken=>{
-		let id = Date.now().toString();
+		let title = escapeUnsafe(req.body.title).trim();
+		let id = makeId(title);
 		let db = admin.database();
 		let ref = db.ref("/posts");
-		let post = ref.child(id)
+		let post = ref.child(id);
 		post.set({
 			title: escapeUnsafe(req.body.title),
 			subtitle: escapeUnsafe(req.body.subtitle),
 			content: escapeUnsafe(req.body.content),
 			image: req.body.image,
+			snippet: escapeUnsafe(req.body.snippet),
+			date: Date.now().toString(),
 			id: id
 		}).then(()=>{
 			response = new Response(Response.STATUS_OK, 'Post created successfully', null);
@@ -88,6 +106,7 @@ router.put('/posts/:id', function(req, res, next){
 			subtitle: escapeUnsafe(req.body.subtitle),
 			content: escapeUnsafe(req.body.content),
 			image: req.body.image,
+			snippet: escapeUnsafe(req.body.snippet)
 		}).then(()=>{
 			response = new Response(Response.STATUS_OK, 'Post saved successfully', null);
 			response.send(res);

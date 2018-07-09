@@ -1,12 +1,16 @@
 <h1>Posts</h1>
 
 <section id="admin-posts">
-<% if(Object.keys(posts).length > 0){ %>
-	<% Object.keys(posts).forEach(key=>{ %>
-		<% let post = posts[key] %>
-		<%- include('partials/post-card', { post: post }) %>
-	<% }) %>
-<% } else { %>
-	<p>No posts exist. <a href="/admin/posts/edit">Add one!</a></p>
-<% } %>
+<%
+	posts.unshift({
+		title: "Add new post",
+		image: "https://placehold.it/350x350",
+		id: ""
+	})
+%>
+	<div class="grid-x grid-margin-x grid-margin-y">
+		<% posts.forEach(post=>{ %>
+			<%- include('partials/post-card', { post: post }) %>
+		<% }) %>
+	</div>
 </section>
