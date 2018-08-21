@@ -51,16 +51,32 @@ $max-width: 960px;
 			background: transparent;
 			padding: 0 4rem;
 
+			@include breakpoint(small down){
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
 		}
 	}
 	.post{
 		border-radius: 1rem;
 		padding-top: 3rem;
 		background: white;
+		max-width: $max-width;
+
+		@include breakpoint(small down){
+			// border-radius: 0;
+			// position: absolute;
+			// top: 50%;
+		}
 
 		#post-content{
 			text-align: left;
 			padding: 0 3rem;
+
+			@include breakpoint(small down){
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
 
 			h1,h2,h3,h4,h5,h6{
 				font-weight: 600; 

@@ -161,7 +161,7 @@ hr{
 	.section-header{
 		text-transform:uppercase;
 		font-weight: 400;
-		font-size: 1.5rem;
+		// font-size: 1.5rem;
 		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
 		&::before{
@@ -270,6 +270,8 @@ hr{
 
 	// fixes ghost scrolling somehow
 	right: 0;
+
+	background-position-x: percentage(5/12) !important;
 
 	@include gradient-dim;
 	background-repeat: no-repeat;

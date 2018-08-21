@@ -28,7 +28,8 @@ router.get('/post/:id', function(req, res, next){
 		res.render('blog-page', { 
 			title: data.title ,
 			content: data.content,
-			snippet: data.snippet
+			snippet: data.snippet,
+			image: data.image
 		})
 	}).catch(e=>{
 		console.error(e)

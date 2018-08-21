@@ -88,6 +88,7 @@ router.get('/posts/edit/:id', function(req, res, next) {
 				subtitle: data.subtitle,
 				content: data.content,
 				id: req.params.id,
+				snippet: data.snippet,
 				image: data.image
 			} 
 		});

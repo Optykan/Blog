@@ -3,7 +3,7 @@
 	// box-sizing: content-box;
 	perspective:3px;
 	height: 100vh;
-	overflow-x: hidden;
+	// overflow-x: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -15,7 +15,8 @@
 		// right: 0;
 		bottom: 0;
 		left: 0;
-		transform-origin-x: 100%;
+		// this is so dumb
+		transform-origin: percentage(5/6);
 		&.parallax-base {
 			transform: translateZ(0) scale(1);
 		}
