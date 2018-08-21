@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const fetch = require("node-fetch");
+const Response = require('./Response');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	res.render('blog', { 
@@ -13,6 +15,7 @@ router.get('/post/:id', function(req, res, next){
 	let origin = req.get("host")
 	let postId = req.params.id
 	let url = req.protocol + '://' + origin + '/api/posts/'+postId
+	console.log(url)
 
 	fetch(url).then(body=>{
 		if(body.status === Response.STATUS_NO_CONTENT){
@@ -22,11 +25,14 @@ router.get('/post/:id', function(req, res, next){
 		}
 	}).then(json=>{
 		let data = json.response
-		res.render('blog-page', { title: title })
+		res.render('blog-page', { 
+			title: data.title ,
+			content: data.content,
+			snippet: data.snippet
+		})
 	}).catch(e=>{
 		console.error(e)
 	})
-	res.render('blog-page', { title: 'Some Post' });
 });
 
 module.exports = router;

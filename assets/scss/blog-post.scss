@@ -1,0 +1,70 @@
+@import 'utils';
+@import 'portfolio';
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+$clip-height: 5rem;
+$hero-height: 50%;
+$header-height: 400px;
+$max-width: 960px;
+
+.webp {
+	.hero-header{
+		background-image: url('/images/compress/low-poly-texture-30.png')
+	}
+}
+.no-webp{
+	.hero-header{
+		background-image: url('/images/compress/low-poly-texture-30.png')
+	}
+}
+
+#blog-post{
+	.header-section{
+		min-height: $header-height - 50px;
+	}
+	.header-text{
+		@include breakpoint(medium up){
+			height: 60%;
+		}
+		@include breakpoint(small down){
+			height: calc(55% - #{$clip-height}); 
+		}
+	}
+	.hero-header{
+		@include breakpoint(medium up){
+			height: 60%;
+			top: 0;
+		}
+		@include breakpoint(small down){
+			height: 60%;
+			top: -25%;
+		}
+		min-height: $header-height;
+		clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$clip-height}), 0 100%);
+	}
+	.section-content{
+		@include breakpoint(small down){
+			top: 0;
+		}
+
+		&.post-content{
+			background: transparent;
+			padding: 0 4rem;
+
+		}
+	}
+	.post{
+		border-radius: 1rem;
+		padding-top: 3rem;
+		background: white;
+
+		#post-content{
+			text-align: left;
+			padding: 0 3rem;
+
+			h1,h2,h3,h4,h5,h6{
+				font-weight: 600; 
+			}
+		}
+	}
+}
