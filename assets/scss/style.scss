@@ -271,11 +271,9 @@ hr{
 	// fixes ghost scrolling somehow
 	right: 0;
 
-	background-position-x: percentage(5/12) !important;
-
 	@include gradient-dim;
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: percentage(5/12) center;
 	background-size: cover;
 }
 

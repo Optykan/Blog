@@ -17,8 +17,16 @@
 	</div>
 	<section class="parallax-static section-content post-content">
 		<div class="section post">
-			<h5 class="section-header">About</h5>
-			<p class="os text-center" id="post-content"><%=content%></p>
+			<div class="post-meta">
+				<div class="meta meta-left">
+					<a href="/blog">
+						<i class="ion ion-chevron-left"></i> back
+					</a>
+				</div>
+				<div class="meta meta-right">
+				</div>
+			</div>
+			<div class="os" id="post-content"><%=content%></div>
 			
 			<div class="footer">
 				<p class="footer-left os">Made with&nbsp;<i class="ion ion-<%=icons[credit]%>" id="credit-icon" data-hover-color="<%=colors[credit]%>" data-open="loginModal"></i></p>

@@ -16,12 +16,12 @@
 		bottom: 0;
 		left: 0;
 		// this is so dumb
-		transform-origin: percentage(5/6);
+		transform-origin: center;
 		&.parallax-base {
 			transform: translateZ(0) scale(1);
 		}
 		&.parallax-back {
-			transform: translateZ(-1px) scale(2) translateX(-4px);
+			transform: translate3d(-3px, -16px, -1px) scale(calc(4/3), 1.5);
 		}
 	}
 }
