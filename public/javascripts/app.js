@@ -116,13 +116,30 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 })();
 
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('/sw.js').then(function (response) {
+	navigator.serviceWorker.getRegistrations().then(function (registrations) {
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
 
-		// Service worker registration done
-		console.log('Registration Successful', response);
-	}, function (error) {
+		try {
+			for (var _iterator = registrations[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var registration = _step.value;
 
-		// Service worker registration failed
-		console.log('Registration Failed', error);
+				registration.unregister();
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator.return) {
+					_iterator.return();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
+		}
 	});
 }

@@ -41,16 +41,9 @@
 })()
 
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('/sw.js')
-	.then(function(response) {
-
-	// Service worker registration done
-	console.log('Registration Successful', response);
-
-	}, function(error) {
-
-	// Service worker registration failed
-	console.log('Registration Failed', error);
-
- 	})
+	navigator.serviceWorker.getRegistrations().then(function(registrations) {
+		for(let registration of registrations) {
+			registration.unregister()
+		} 
+	})
 }
