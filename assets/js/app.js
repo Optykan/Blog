@@ -45,5 +45,7 @@ if ('serviceWorker' in navigator) {
 		for(let registration of registrations) {
 			registration.unregister()
 		} 
+	}).catch(e =>{
+		console.error(e)
 	})
 }

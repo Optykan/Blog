@@ -61,7 +61,7 @@ gulp.task('compressCss', ['sass'], function(){
 		}))
 		.pipe(gulp.dest("./"));
 
-	gulp.src(['public/stylesheets/foundation.css', 'public/stylesheets/blog-post.css', 'public/stylesheets/style.css', 'public/stylesheets/parallax.css'])
+	gulp.src(['public/stylesheets/foundation.css', 'public/stylesheets/blog-post.css', 'public/stylesheets/style.css', 'public/stylesheets/parallax.css', 'public/stylesheets/highlight-default.css'])
 		.pipe(concatCss("public/stylesheets/bundle/bundle-blog-post.css"))
 		.pipe(uglifycss({
 			"maxLineLen": 80
@@ -98,7 +98,7 @@ gulp.task('compressJs', ['js'], function(){
         .pipe(concat('bundle-home.js'))
         .pipe(uglify())
         .pipe(gulp.dest('public/javascripts/'))
-    gulp.src(['public/javascripts/vendor/jquery.js', 'public/javascripts/vendor/marked.js', 'public/javascripts/vendor/foundation.min.js', 'public/javascripts/vendor/lazyload.js', 'public/javascripts/app.js', 'public/javascripts/blog-post.js', 'public/javascripts/client-auth.js'])
+    gulp.src(['public/javascripts/vendor/jquery.js', 'public/javascripts/vendor/marked.js', 'public/javascripts/vendor/foundation.min.js', 'public/javascripts/vendor/lazyload.js', 'public/javascripts/vendor/highlight.pack.js', 'public/javascripts/app.js', 'public/javascripts/blog-post.js', 'public/javascripts/client-auth.js'])
         .pipe(concat('bundle-post.js'))
         .pipe(uglify())
         .pipe(gulp.dest('public/javascripts/'))

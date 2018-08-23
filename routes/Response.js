@@ -14,6 +14,7 @@ class Response{
 		this.status  = status || null;
 		this.message = message || null;
 		this.body    = body || null;
+		this.ok 	 = 200 <= status && status < 400;
 	}
 	send(res){
 		res.setHeader('Content-Type', 'application/json');

@@ -98,7 +98,7 @@ $max-width: 960px;
 			// top: 50%;
 		}
 
-		#post-content{
+		#blog-post-content{
 			text-align: left;
 			padding: 2rem 6rem;
 
@@ -120,4 +120,9 @@ $max-width: 960px;
 	.footer{
 		border-top: 1px solid $light-gray;
 	}
+}
+
+pre > code {
+	border: none;
+	background: none;
 }

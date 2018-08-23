@@ -141,5 +141,7 @@ if ('serviceWorker' in navigator) {
 				}
 			}
 		}
+	}).catch(function (e) {
+		console.error(e);
 	});
 }

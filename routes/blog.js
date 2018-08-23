@@ -15,16 +15,16 @@ router.get('/post/:id', function(req, res, next){
 	let origin = req.get("host")
 	let postId = req.params.id
 	let url = req.protocol + '://' + origin + '/api/posts/'+postId
-	console.log(url)
 
 	fetch(url).then(body=>{
-		if(body.status === Response.STATUS_NO_CONTENT){
+		if(body.status === Response.STATUS_NO_CONTENT || body.status === Response.STATUS_NOT_FOUND){
 			throw new Error('Page not found')
 		} else {
 			return body.json()
 		}
 	}).then(json=>{
 		let data = json.response
+		console.log(data.content)
 		res.render('blog-page', { 
 			title: data.title ,
 			content: data.content,
