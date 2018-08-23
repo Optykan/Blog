@@ -1,36 +1,28 @@
-'use strict';
+"use strict";
 
-var CACHE = 'syang';
+navigator.serviceWorker.getRegistrations().then(function (registrations) {
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-importScripts('/javascripts/vendor/cache-polyfill.js');
+  try {
+    for (var _iterator = registrations[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var registration = _step.value;
 
-self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (cache) {
-    return cache.addAll(['/', '/favicon.ico', '/stylesheets/bundle/bundle-home.css', '/javascripts/bundle-home.js', '/images/compress/low-poly-texture-22.png', '/images/webp/low-poly-texture-22.webp', '/images/portfolio/avante-1.jpg', '/images/portfolio/usc-1.jpg', '/images/portfolio/beat-1.jpg', '/images/portfolio/blog-1.jpg', '/images/portfolio/teachassist-1.jpg']);
-  }));
+      registration.unregister();
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
 });
-
-self.addEventListener('fetch', function (event) {
-  event.respondWith(fromNetwork(event.request, 400).catch(function () {
-    return fromCache(event.request);
-  }));
-});
-
-function fromCache(request) {
-  return caches.open(CACHE).then(function (cache) {
-    return cache.match(request).then(function (matching) {
-      return matching || Promise.reject('no-match');
-    });
-  });
-}
-
-function fromNetwork(request, timeout) {
-  return new Promise(function (fulfill, reject) {
-    var timeoutId = setTimeout(reject, timeout);
-
-    fetch(request).then(function (response) {
-      clearTimeout(timeoutId);
-      fulfill(response);
-    }, reject);
-  });
-}

@@ -115,17 +115,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	});
 })();
 
-// if ('serviceWorker' in navigator) {
-// 	navigator.serviceWorker.register('/sw.js')
-// 	.then(function(response) {
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/sw.js').then(function (response) {
 
-// 	// Service worker registration done
-// 	console.log('Registration Successful', response);
+		// Service worker registration done
+		console.log('Registration Successful', response);
+	}, function (error) {
 
-// 	}, function(error) {
-
-// 	// Service worker registration failed
-// 	console.log('Registration Failed', error);
-
-//  	})
-// }
+		// Service worker registration failed
+		console.log('Registration Failed', error);
+	});
+}
