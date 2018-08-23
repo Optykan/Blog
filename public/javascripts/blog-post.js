@@ -6,7 +6,7 @@
 	var postContent = postContainer.innerHTML;
 	postContent = postContent.replace(/\&gt;/gi, '>').replace(/\&lt;/gi, '<');
 
-	postContainer.innerHTML = marked(postContent);
+	// postContainer.innerHTML = marked(postContent);
 
 	hljs.initHighlightingOnLoad();
 
