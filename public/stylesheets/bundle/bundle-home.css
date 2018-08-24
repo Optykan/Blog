@@ -1846,4 +1846,4 @@ hr.small-divider.white{border:2px solid white}.social{margin-top:1rem}.social .s
 .parallax .parallax-layer{position:absolute;top:0;bottom:0;left:0;-webkit-transform-origin:center;transform-origin:center}
 .parallax .parallax-layer.parallax-base{-webkit-transform:translateZ(0) scale(1);transform:translateZ(0) scale(1)}
 .parallax .parallax-layer.parallax-back{-webkit-transform:translate3d(-3px,-16px,-1px) scale(calc(4/3), 1.5);transform:translate3d(-3px,-16px,-1px) scale(calc(4/3), 1.5)}
-.parallax-static{-webkit-perspective:0;perspective:0}
+.parallax-static{-webkit-perspective:0;perspective:0}body{position:fixed;height:100vh;width:100vw}

@@ -1695,8 +1695,9 @@ hr.small-divider.white{border:2px solid white}.social{margin-top:1rem}.social .s
 .parallax .parallax-layer{position:absolute;top:0;bottom:0;left:0;-webkit-transform-origin:center;transform-origin:center}
 .parallax .parallax-layer.parallax-base{-webkit-transform:translateZ(0) scale(1);transform:translateZ(0) scale(1)}
 .parallax .parallax-layer.parallax-back{-webkit-transform:translate3d(-3px,-16px,-1px) scale(calc(4/3), 1.5);transform:translate3d(-3px,-16px,-1px) scale(calc(4/3), 1.5)}
-.parallax-static{-webkit-perspective:0;perspective:0}.hljs{display:block;overflow-x:auto;padding:.5em;background:#f0f0f0}
-.hljs,.hljs-subst{color:#444}.hljs-comment{color:#888}.hljs-keyword,.hljs-attribute,.hljs-selector-tag,.hljs-meta-keyword,.hljs-doctag,.hljs-name{font-weight:bold}
+.parallax-static{-webkit-perspective:0;perspective:0}body{position:fixed;height:100vh;width:100vw}
+.hljs{display:block;overflow-x:auto;padding:.5em;background:#f0f0f0}.hljs,.hljs-subst{color:#444}
+.hljs-comment{color:#888}.hljs-keyword,.hljs-attribute,.hljs-selector-tag,.hljs-meta-keyword,.hljs-doctag,.hljs-name{font-weight:bold}
 .hljs-type,.hljs-string,.hljs-number,.hljs-selector-id,.hljs-selector-class,.hljs-quote,.hljs-template-tag,.hljs-deletion{color:#800}
 .hljs-title,.hljs-section{color:#800;font-weight:bold}.hljs-regexp,.hljs-symbol,.hljs-variable,.hljs-template-variable,.hljs-link,.hljs-selector-attr,.hljs-selector-pseudo{color:#bc6060}
 .hljs-literal{color:#78a960}.hljs-built_in,.hljs-bullet,.hljs-code,.hljs-addition{color:#397300}
