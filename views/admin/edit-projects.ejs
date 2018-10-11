@@ -1,0 +1,30 @@
+<form action="/api/projects" method="POST" name="project_form">
+	<input name="id" type="hidden" value="<%=project.id%>">
+	<label for="title">Title</label>
+	<input type="text" name="title" placeholder="Project Title" value="<%=project.title%>" required>
+	<textarea id="simpleMDE"></textarea>
+	<textarea name="snippet"></textarea>
+	<label for="image">Image</label>
+	<input name="image" type="text" value="<%=project.image%>">
+	<button class="button primary" id="save-project"><i class="ion ion-checkmark"></i> Save</button>
+	<button class="button alert" id="delete-project"><i class="ion ion-close"></i> Delete</button>
+	<button class="button secondary" id="cancel-project">Cancel</button> 
+</form>
+
+<script src="/javascripts/vendor/simplemde.min.js"></script>
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("simpleMDE") });
+
+// hello, XSS
+<% let content = post.content
+        .replace("/", "\\")
+		.replace(/`/g, '\\`')
+		.replace(/\n/g, '\\n')
+		.replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, '\''); 
+%> 
+simplemde.value(`<%-content%>`)
+</script>

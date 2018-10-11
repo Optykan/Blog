@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+
+@import '../../node_modules/foundation-sites/scss/foundation';
+@import 'settings';
+@import 'utils'; 
+
+@include foundation-everything;
+
+html,body,#admin{
+	height: 100%;
+	width: 100%;
+}
+#admin{
+	display:flex;
+	.menu li:not(.menu-text){
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		padding-right: 1rem;
+		transition: background 0.5s ease;
+		a{
+			color: $black;
+		}
+		i{
+			margin-right: 1rem;
+		}
+		&:hover{
+			background: $light-gray;
+		}
+	}
+	.menu .nav-active{
+		background: $medium-gray;
+	}
+	#logout{
+		position:absolute;
+		bottom: 0;
+		padding: 1rem;
+		width: 100%;
+		transition: background 0.5s ease;
+		cursor: pointer;
+		a{
+			color: $black;
+		}
+		i{
+			margin-right: 1rem;
+		}
+		&:hover{
+			background: $alert-color;
+			a{
+				color: $white;
+				transition-delay: 0.1s
+			}
+		}	
+	}
+	.admin-left{
+		position: relative;
+		box-shadow: 5px 5px 8px $light-gray;
+		.menu-text{
+			background: $primary-color;
+			color: $white;
+			padding: 1.5rem 3rem;
+			font-size: 1.5rem;
+		}
+	}
+	.admin-right{
+		// background: darken($white, 1%);
+		padding: 2rem;
+		width: 100%;
+	}
+	.admin-card{
+		width :300px;
+	}
+}
+#alert{
+	position:fixed;
+	right: 1rem;
+	top: 1rem;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	max-width: 25%;
+	&.alert-showing{
+		opacity: 1;
+	}
+}
+pre > code {
+	border: none;
+	background: none;
+}

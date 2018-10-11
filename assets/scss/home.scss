@@ -7,48 +7,38 @@ $hero-height: 80%;
 $header-height: 600px;
 $max-width: 960px;
 
+.webp {
+	#home .hero-header{
+		background-image: url('/images/webp/low-poly-texture-22.webp')
+	}
+}
+.no-webp{
+	#home .hero-header{
+		background-image: url('/images/compress/low-poly-texture-22.png')
+	}
+}
+
 #home{
-	font-family: 'Open Sans', sans-serif;
 	p{
 		max-width: $max-width;
 	}
-	.header-text{
-		@include flex-center;
-		flex-direction: column;
-		text-align: center;
-		color: white;
-		@include breakpoint(medium up){
-			height: 75%;
-		}
-		@include breakpoint(small down){
-			height: calc(#{$hero-height} - #{$clip-height});
-		}
-		#hi-there{
-			margin-bottom: 0;
-		}
-		#bio{
-			margin-top: 0.5rem;
-			@extend .os;
-		}
+	.portfolio-section{
+		max-width: $max-width;
 	}
+
 	.header-section{
 		min-height: $header-height;
 	}
 	.hero-header{
 		@include breakpoint(medium up){
-			height: 75%;
-			top: -16.67%;
+		height: 75%;
+		top: -16.67%;
 		}
 		@include breakpoint(small down){
 			height: 100%;
 			top: -50%;
 		}
 		min-height: $header-height;
-
-		@include gradient-dim;
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: cover;
 		clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$clip-height}), 0 100%);
 	}
 	.section{
@@ -64,75 +54,18 @@ $max-width: 960px;
 			padding: 1rem;
 		}
 	}
-	.home-section{
-		clip-path: polygon(0 4rem, 100% 0, 100% 100%, 0 100%);
-		// -webkit-backface-visibility: hidden;
-		padding: 0rem 0.001rem;
-		position: relative;
-		top: 20%;
-		width:100%;
-		box-sizing: content-box;
-		@include flex-center;
-		flex-direction: column;
-		background: $white;
+	.section-content{
+		@include breakpoint(small down){
+			top: calc(25% - #{$clip-height});
+		}
+	}
+	.header-text{
+		@include breakpoint(medium up){
+			height: 75%;
+		}
+		@include breakpoint(small down){
+			height: calc(#{$hero-height} - #{$clip-height});
+		}
+	}
 
-		@include breakpoint(small down){
-			top: calc(#{$hero-height} - #{$clip-height});
-		}
-	}
-	.down-arrows{
-		display:flex;
-		flex-direction: column;
-		font-size: 2rem;
-		position:relative;
-		top: 7rem; 
-		@include breakpoint(small down){
-			top: 3rem;
-		}
-		.arrow{
-			left: 0;
-			color: rgba(0,0,0,0.1);
-			animation: graywhitecycle 4s ease-in-out 0s infinite normal;
-			&:nth-child(1){
-			}
-			&:nth-child(2){
-				position:absolute;
-				top: 0.75rem;
-				animation-delay: 0.5s;
-			}
-			&:nth-child(3){
-				position:absolute;
-				top: 1.5rem;
-				animation-delay: 1s;
-			}		
-		}
-	}
-	.portfolio-section{
-		max-width: $max-width;
-	}
-	#credit-icon{
-		transition: color 0.5s ease;
-		color: #cacaca;
-		font-size: 1.2rem;
-	}
-	.home-footer{
-		display: flex;
-		flex-direction: row;
-		width:100%;
-		padding: 1rem 2rem;
-		font-size: 0.8rem;
-		box-sizing: border-box;
-		p{
-			margin-bottom: 0;
-		}
-		.footer-right{
-			text-align:right;
-			flex: 1 1 50%;
-		}
-		.footer-left{
-			display:flex;
-			flex: 1 1 50%;
-			align-items: center;
-		}
-	}
 }

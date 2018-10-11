@@ -1,0 +1,16 @@
+<h1>Posts</h1>
+
+<section id="admin-posts">
+<%
+	posts.unshift({
+		title: "Add new post",
+		image: "https://placehold.it/350x350",
+		id: ""
+	})
+%>
+	<div class="grid-x grid-margin-x grid-margin-y">
+		<% posts.forEach(post=>{ %>
+			<%- include('partials/post-card', { post: post }) %>
+		<% }) %>
+	</div>
+</section>

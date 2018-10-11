@@ -1,0 +1,42 @@
+@import 'utils';
+@import 'portfolio';
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+$clip-height: 5rem;
+$hero-height: 50%;
+$header-height: 600px;
+$max-width: 960px;
+
+.webp {
+	.hero-header{
+		background-image: url('/images/compress/low-poly-texture-16.png')
+	}
+}
+.no-webp{
+	.hero-header{
+		background-image: url('/images/compress/low-poly-texture-16.png')
+	}
+}
+
+#error{
+	.header-text{
+		@include breakpoint(medium up){
+			height: 50%;
+		}
+		@include breakpoint(small down){
+			height: calc(#{$hero-height} - #{$clip-height});
+		}
+	}
+	.hero-header{
+		@include breakpoint(medium up){
+			height: 25%;
+			top: -37.5%;
+		}
+		@include breakpoint(small down){
+			height: 50%;
+			top: -25%;
+		}
+		min-height: $header-height;
+		clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$clip-height}), 0 100%);
+	}
+}

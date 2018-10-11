@@ -21,6 +21,7 @@ $subtitle-size: 14px;
 		font-size: $title-size;
 		transition: font-size $card-grow-time linear;
 		transition-delay: 0.1s;
+		white-space: pre;
 	}
 	.card-subtitle{
 		font-size: $subtitle-size;
@@ -57,7 +58,7 @@ $subtitle-size: 14px;
 		-webkit-backface-visibility: hidden;
 		width: 105%;
 		height: 105%;
-		box-shadow: 4px 4px 15px $medium-gray;
+		box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 		border: 1px solid $primary-color;
 		animation: border-pulse 3s linear 0s infinite alternate;
 		animation-fill-mode: both;

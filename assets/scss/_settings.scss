@@ -320,7 +320,7 @@ $callout-margin: 0 0 1rem 0;
 $callout-padding: 1rem;
 $callout-font-color: $body-font-color;
 $callout-font-color-alt: $body-background;
-$callout-radius: $global-radius;
+$callout-radius: 5px;
 $callout-link-tint: 30%;
 
 // 14. Card
@@ -330,8 +330,7 @@ $card-background: $white;
 $card-font-color: $body-font-color;
 $card-divider-background: $light-gray;
 $card-border: 1px solid rgba(0, 0, 0, 0);
-$card-shadow: 2px 2px 10px $light-gray;
-// $card-shadow: none;
+$card-shadow: 2px 2px 10px rgba(0,0,0,0.2);
 $card-border-radius: 3px;
 // $card-padding: 2rem;
 $card-padding: 24px 16px;

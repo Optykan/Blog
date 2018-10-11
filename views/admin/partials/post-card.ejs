@@ -1,0 +1,8 @@
+<div class="card admin-card cell large-2 medium-4 small-12">
+	<img src="<%=post.image%>">
+	<div class="card-section">
+		<h3><%=post.title%></h3>
+		<p><%=post.snippet%></p>
+		<a href="/admin/posts/edit/<%=post.id%>" class="button primary"><%=post.id ? "Edit" : "New"%></a>
+	</div>
+</div>

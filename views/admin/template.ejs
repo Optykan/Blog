@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+		<title><%= title %></title>
+		<meta charset="utf-8">
+		<meta name="viewport"  content="width=device-width, initial-scale=1">
+		<link rel='stylesheet' href='/stylesheets/admin.css' />
+		<link rel='stylesheet' href='/stylesheets/simplemde.min.css' />
+		<link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' type="text/css"/>
+	</head>
+	<body>
+		<section id="admin">
+			<div class="admin-left">
+				<ul class="vertical menu icons icon-left">
+					<li class="menu-text">Admin</li>
+					<li<%=page=='admin' ? ' class=nav-active' : ''%>><a href="/admin"><i class="ion ion-home"></i>Home</a></li>
+					<li<%=page=='posts' || page=='edit-posts' ? ' class=nav-active' : ''%>><a href="/admin/posts"><i class="ion ion-document"></i>Posts</a></li>
+					<li<%=page=='portfolio' ? ' class=nav-active' : ''%>><a href="/admin/portfolio"><i class="ion ion-cube"></i>Portfolio</a></li>
+				</ul>
+				<div id="logout">
+					<a href="#"><i class="ion ion-log-out"></i>Logout</a>
+				</div>
+			</div>
+			<div class="admin-right">
+				<%- include(page) %>
+			</div>
+		</section>
+
+		<div class="callout" id="alert">
+			<h5 id="alert-title">Title</h5>
+			<p id="alert-message">Something happened</p>
+		</div>
+		<script src="/javascripts/vendor/jquery.js"></script>
+		<script src="/javascripts/vendor/foundation.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var userToken = null;
+		  var config = {
+		    apiKey: "AIzaSyBAqYH3BhdY4kaX_SVgg1jGsNUg6BoFxeE",
+		    authDomain: "blog-188504.firebaseapp.com",
+		    databaseURL: "https://blog-188504.firebaseio.com",
+		    projectId: "blog-188504",
+		    storageBucket: "blog-188504.appspot.com",
+		    messagingSenderId: "984446413116"
+		  };
+		  firebase.initializeApp(config);
+
+		  firebase.auth().onAuthStateChanged(user=>{
+		  	user.getIdToken(true).then(token=>{
+		  		userToken = token
+		  	}).catch(e=>{
+			  	throw new Error("This shouldn't even happen")
+			  })
+		  })
+
+		</script>
+		<script src="/javascripts/admin.js"></script>
+	</body>
+</html>

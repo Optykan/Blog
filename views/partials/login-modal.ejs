@@ -1,0 +1,20 @@
+<div class="reveal" id="loginModal" data-reveal>
+  <h1>Super Secret Login</h1>
+  <input type="text" name="email" id="login-email">
+  <input type="password" name="password" id="login-password">
+  <button class="button" id="login-button"><i class="ion ion-log-in"></i>&nbsp;Login</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBAqYH3BhdY4kaX_SVgg1jGsNUg6BoFxeE",
+    authDomain: "blog-188504.firebaseapp.com",
+    databaseURL: "https://blog-188504.firebaseio.com",
+    projectId: "blog-188504",
+    storageBucket: "blog-188504.appspot.com",
+    messagingSenderId: "984446413116"
+  };
+  firebase.initializeApp(config);
+</script>

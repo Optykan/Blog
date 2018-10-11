@@ -1,89 +1,54 @@
-@import '../../node_modules/foundation-sites/scss/foundation';
 @import 'utils';
+@import 'portfolio';
+@import '../../node_modules/foundation-sites/scss/foundation';
 
-$category-colour: #1abc9c;
+$clip-height: 5rem;
+$hero-height: 50%;
+$header-height: 400px;
+$max-width: 960px;
 
-// #header{
-	// 	height: 100vh;
-	// 	position:relative;
-	// 	#hero-left{
-		// 		background-image: url("../images/everest.jpg");
-		// 		background-position: center 0px;
-		// 		background-size: auto 200%;
-		// 		@include gradient-dim;
-		// 		@include breakpoint(large up){
-			// 			overflow:hidden;
-			// 			position:fixed;
-			// 			height:100%;
-			// 		}
+.webp {
+	.hero-header{
+		background-image: url('/images/compress/low-poly-texture-30.png')
+	}
+}
+.no-webp{
+	.hero-header{
+		background-image: url('/images/compress/low-poly-texture-30.png')
+	}
+}
 
-			// 		#hero-text-container{
-				// 			position: absolute;
-				// 			bottom: 0;
-				// 			z-index: 99;
-				// 			width:100%;
-				// 			text-transform: lowercase;
-				// 			color: white;
-				// 			text-align:center;
-				// 			h1{
-					// 				font-family: 'Rochester', cursive;
-					// 			}
-					// 			h6{
-						// 				font-family: 'Lato', sans-serif;
-						// 				text-transform: uppercase;
-						// 			}
-						// 			@include breakpoint(medium down){
-							// 				position: relative;
-							// 				bottom: 0;
-							// 				margin-top: 50%;
-							// 			}
-							// 		}
+#blog{
+	.portfolio-section{
+		max-width: $max-width;
+	}
 
-							// 	}
-							
-							// }
-							// #blog-posts{
-								// 	@include breakpoint(large up){
-									// 		margin-top: 4rem;
-									// 		position:absolute;
-									// 		right:0;
-									// 	}
-									// }
-
-									// .blog-post{
-										// 	margin-bottom: 3rem;
-										// 	.title{
-											// 		font-weight:600;
-											// 	}
-											// 	.meta{
-												// 		margin-left: 0;
-												// 		*{
-													// 			font-weight:600;
-													// 			font-size: 0.9rem;
-													// 			text-transform: uppercase;
-													// 			font-family: 'Lato', sans-serif;
-													// 		}
-													// 		.date{
-														// 			display:inline;
-														// 		}
-														// 		.separator{
-															// 			margin-left:3px;
-															// 			margin-right:2px;
-															// 			&::after{
-																// 				content: "|";
-																// 				position: relative;
-																// 				bottom: 1px;
-																// 				color: $dark-gray;
-																// 			}
-																
-																// 		}
-																// 		.category{
-																	// 			display:inline;
-																	// 			color: $category-colour;
-																	// 		}
-																	// 	}
-																	// 	a{
-																		// 		font-family: 'Lato', sans-serif;
-																		// 		text-transform: uppercase;
-																		// 	}
-																		// }
+	.header-section{
+		min-height: $header-height - 50px;
+	}
+	.header-text{
+		@include breakpoint(medium up){
+			height: 60%;
+		}
+		@include breakpoint(small down){
+			height: calc(55% - #{$clip-height}); 
+		}
+	}
+	.hero-header{
+		@include breakpoint(medium up){
+			height: 60%;
+			top: 0;
+		}
+		@include breakpoint(small down){
+			height: 60%;
+			top: -25%;
+		}
+		min-height: $header-height;
+		clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$clip-height}), 0 100%);
+	}
+	.section-content{
+		@include breakpoint(small down){
+			top: 0;
+		}
+	}
+}

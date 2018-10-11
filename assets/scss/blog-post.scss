@@ -1,0 +1,128 @@
+@import 'utils';
+@import 'portfolio';
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+$clip-height: 5rem;
+$hero-height: 50%;
+$header-height: 400px;
+$max-width: 960px;
+
+.webp {
+	.hero-header{
+		background-image: url('/images/compress/low-poly-texture-30.png')
+	}
+}
+.no-webp{
+	.hero-header{
+		background-image: url('/images/compress/low-poly-texture-30.png')
+	}
+}
+
+#blog-post{
+	.header-section{
+		min-height: $header-height - 50px;
+	}
+	.header-text{
+		@include breakpoint(medium up){
+			height: 60%;
+		}
+		@include breakpoint(small down){
+			height: calc(55% - #{$clip-height}); 
+		}
+	}
+	.hero-header{
+		@include breakpoint(medium up){
+			height: 60%;
+			top: 0;
+		}
+		@include breakpoint(small down){
+			height: 60%;
+			top: -25%;
+		}
+		min-height: $header-height;
+		clip-path: polygon(0 0, 100% 0, 100% calc(100% - #{$clip-height}), 0 100%);
+	}
+	.section-content{
+		@include breakpoint(small down){
+			top: 0;
+		}
+
+		&.post-content{
+			background: transparent;
+			padding: 0 4rem;
+
+			@include breakpoint(small down){
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
+		}
+	}
+	.post-meta{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		.meta{
+			a {
+				color: $black;
+			}
+		}
+		.meta-left{
+			padding: 0.75rem 1.25rem;
+			border-bottom: 1px solid $light-gray;
+			border-right: 1px solid $light-gray;
+			border-bottom-right-radius: 1rem;
+			border-top-left-radius: 1rem;
+			transition: 1s background ease;
+			cursor: pointer;
+			i {
+				font-size: 1rem;
+			}
+			&:hover{
+				background-color: #55efc4;
+			}
+		}
+	}
+	.post{
+		border-top-left-radius: 1rem;
+		border-top-right-radius: 1rem;
+		padding: 0rem;
+
+		background: white;
+		max-width: $max-width;
+		padding-bottom: 0;
+		box-shadow: $card-shadow;
+
+		@include breakpoint(small down){
+			// border-radius: 0;
+			// position: absolute;
+			// top: 50%;
+		}
+
+		#blog-post-content{
+			text-align: left;
+			padding: 2rem 6rem;
+
+			&:first-line{
+				font-size: 1.5rem;
+			}
+
+			@include breakpoint(small down){
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
+
+			h1,h2,h3,h4,h5,h6{
+				font-weight: 600; 
+			}
+		}
+	}
+
+	.footer{
+		border-top: 1px solid $light-gray;
+	}
+}
+
+pre > code {
+	border: none;
+	background: none;
+}

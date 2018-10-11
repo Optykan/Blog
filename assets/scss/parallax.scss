@@ -3,7 +3,7 @@
 	// box-sizing: content-box;
 	perspective:3px;
 	height: 100vh;
-	overflow-x: hidden;
+	// overflow-x: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -12,18 +12,25 @@
 	.parallax-layer {
 		position: absolute;
 		top: 0;
-		right: 0;
+		// right: 0;
 		bottom: 0;
 		left: 0;
-		transform-origin-x: 100%;
+		// this is so dumb
+		transform-origin: center;
 		&.parallax-base {
 			transform: translateZ(0) scale(1);
 		}
 		&.parallax-back {
-			transform: translateZ(-1px) scale(2) translateX(-4px);
+			transform: translate3d(-3px, -16px, -1px) scale(calc(4/3), 1.5);
 		}
 	}
 }
 .parallax-static{
 	perspective: 0px; 
+}
+
+body {
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
 }
